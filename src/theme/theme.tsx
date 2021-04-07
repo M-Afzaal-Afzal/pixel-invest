@@ -10,6 +10,7 @@ const styles = {
             "html, body": {
                 fontFamily: 'inter',
                 color: "white",
+                fontWeight: 'normal'
             },
             a: {
                 textDecoration: 'none',
