@@ -1,6 +1,6 @@
 import React from 'react';
 import {Container, Box, HStack, Flex, Heading} from "@chakra-ui/react";
-import HeaderButton from "../Button/HeaderButton";
+import HeaderButton from "../Buttons/HeaderButton";
 
 const Header: React.FC = () => {
     return (

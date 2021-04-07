@@ -1,19 +1,15 @@
 import {Chakra} from '../theme/Chakra';
 import "focus-visible/dist/focus-visible"
 
-
 import {AppProps} from 'next/app'
-import Header from "../components/Layout/Header";
-import Footer from "../components/Footer";
+import Layout from "../components/Layout/Layout";
 
 function MyApp({Component, pageProps}: AppProps) {
     return (
         <Chakra cookies={pageProps.cookies}>
-            <>
-                <Header/>
+            <Layout>
                 <Component {...pageProps} />
-                <Footer/>
-            </>
+            </Layout>
         </Chakra>
     )
 }
