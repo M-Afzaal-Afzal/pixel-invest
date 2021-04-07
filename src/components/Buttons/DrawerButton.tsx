@@ -1,7 +1,7 @@
 import React from 'react';
 import {Button} from "@chakra-ui/react";
 
-const DrawerButton:React.FC<any> = ({children}) => {
+const DrawerButton:React.FC = ({children}) => {
     return (
         <Button
             fontWeight={'normal'}

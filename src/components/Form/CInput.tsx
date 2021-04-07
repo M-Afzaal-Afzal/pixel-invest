@@ -4,7 +4,7 @@ import {Input} from "@chakra-ui/react";
 // we implemented it as a class based component
 // as we can't pass ref to functional components
 
-class CInput extends React.Component<any> {
+class CInput extends React.Component {
     render() {
         return (
             <Input
