@@ -8,19 +8,18 @@ import {
     useMediaQuery,
     IconButton,
     useDisclosure, VStack, DrawerBody,
-    Text
-} from "@chakra-ui/react";
-import HeaderButton from "../Buttons/HeaderButton";
-import {HamburgerIcon} from "@chakra-ui/icons";
-import {
+    Text,
     Drawer,
     DrawerFooter,
     DrawerHeader,
     DrawerOverlay,
     DrawerContent,
     DrawerCloseButton,
-} from "@chakra-ui/react"
+} from "@chakra-ui/react";
+import HeaderButton from "../Buttons/HeaderButton";
+import {HamburgerIcon} from "@chakra-ui/icons";
 import DrawerButton from "../Buttons/DrawerButton";
+import Link from "next/link";
 
 const Header: React.FC = () => {
 
@@ -52,7 +51,9 @@ const Header: React.FC = () => {
                                     </HStack>
                                 </Box>
                                 <Box>
-                                    <HeaderButton>Logout</HeaderButton>
+                                    <Box as={Link} href={'/login'}>
+                                        <HeaderButton>Login</HeaderButton>
+                                    </Box>
                                 </Box>
                             </>
                         ) : (
@@ -84,12 +85,17 @@ const Header: React.FC = () => {
                                 </VStack>
                             </DrawerBody>
                             <DrawerFooter color={'blue.300'} borderTopWidth={'1px'}>
-                                <VStack w={'100%'}>
-                                    <DrawerButton>Logout</DrawerButton>
+                                <Box w={'100%'}>
+                                    <Box as={Link} href={'/login'}>
+                                        <Box onClick={onClose}>
+                                            <DrawerButton>Login</DrawerButton>
+                                        </Box>
+                                    </Box>
+
                                     <Text align={'right'} color={'blue.300'}>
                                         Powered by PiXeL-invest UG
                                     </Text>
-                                </VStack>
+                                </Box>
                             </DrawerFooter>
                         </DrawerContent>
                     </DrawerOverlay>
