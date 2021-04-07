@@ -43,7 +43,10 @@ const Login: React.FC = () => {
                                 {...register(
                                     'userName',
                                     {
-                                        required: 'You must specify the user name',
+                                        required: {
+                                            value: true,
+                                            message: 'You must specify the user name'
+                                        },
                                     }
                                 )}
                             />
@@ -62,7 +65,10 @@ const Login: React.FC = () => {
                                 {...register(
                                     'password',
                                     {
-                                        required: 'You must have to specify the password',
+                                        required: {
+                                            value: true,
+                                            message: 'You must have to specify the password'
+                                        },
                                         minLength: {
                                             value: 6,
                                             message: 'You password must be of six or more characters'
