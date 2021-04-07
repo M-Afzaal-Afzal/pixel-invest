@@ -7,7 +7,7 @@ import Info from "../components/Hero/info";
 
 
 const Index: React.FC = () => (
-    <Box bg={'#11111B'} p={['2', '6', '12', '20']}>
+    <Box bg={'brand.black'} p={['2', '6', '12', '20']}>
         {/* Box Containing logo with title*/}
         <Box align={'center'} mb={8}>
             <Pentagon/>
@@ -19,7 +19,7 @@ const Index: React.FC = () => (
             <VStack my={16} spacing={16}>
                 <Box>
                     <Info
-                        body={'                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate dolorem fuga illo in iste magni, maxime nesciunt nihil nisi obcaecati omnis optio perspiciatis, quas repellat saepe, sint velit voluptas voluptates.\n'}
+                        body={' Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate dolorem fuga illo in iste magni, maxime nesciunt nihil nisi obcaecati omnis optio perspiciatis, quas repellat saepe, sint velit voluptas voluptates.\n'}
                         photoURL={'/home/chart.png'}
                         title={'The modern art of investment'}
                         rightImage={true}

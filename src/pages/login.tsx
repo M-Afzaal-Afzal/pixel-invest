@@ -29,12 +29,12 @@ const Login: React.FC = () => {
     })
 
     return (
-        <Box w={'100%'} bg={'#11111B'}>
+        <Box w={'100%'} bg={'brand.black'}>
 
             <Box mx={['2', '4', '8']} py={['4rem','6rem','8rem']} align={'center'}>
 
                 <Box p={['8','16','24']} maxW={'40rem'} rounded={'lg'}
-                     bgGradient={'linear(to-b,blue.300,blue.500)'}>
+                     bgGradient={'linear(to-b,brand.primary,brand.secondary)'}>
                     <form onSubmit={handleSubmit(onSubmit)}>
                         <FormControl isInvalid={!!errors?.userName}>
                             <FormLabel htmlFor="name">User Name</FormLabel>

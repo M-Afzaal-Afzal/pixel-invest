@@ -5,7 +5,7 @@ const DrawerButton:React.FC<any> = ({children}) => {
     return (
         <Button
             fontWeight={'normal'}
-            colorScheme={'blue'}
+            colorScheme={'button'}
             isFullWidth
             fontSize={'1.3rem'}
             borderBottom={'.5px solid white'}

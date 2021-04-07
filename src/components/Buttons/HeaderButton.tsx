@@ -3,7 +3,7 @@ import {Button} from "@chakra-ui/react";
 
 const HeaderButton: React.FC<any> = ({children,...props}) => {
     return (
-        <Button colorScheme={'blue'} {...props}>
+        <Button colorScheme={'button'} {...props}>
             {children}
         </Button>
     );

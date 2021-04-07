@@ -29,12 +29,12 @@ const Header: React.FC = () => {
 
 
     return (
-        <Box p={'4'} bgGradient={'linear(to-b,blue.500,blue.300)'} boxShadow={'lg'}>
+        <Box p={'4'} bgGradient={'linear(to-b,brand.secondary,brand.primary)'} boxShadow={'lg'}>
             <Container maxW={'container.xl'}>
                 <Flex direction={'row'} justify={'space-between'}>
                     <Box>
                         <HStack>
-                            <Box bg={'blue.500'} w={'40px'} h={'40px'}>
+                            <Box bg={'brand.secondary'} w={'40px'} h={'40px'}>
                             </Box>
                             <Heading fontSize={'lg'}>PiXel-Invest</Heading>
                         </HStack>
@@ -84,7 +84,7 @@ const Header: React.FC = () => {
                                     <DrawerButton>Account</DrawerButton>
                                 </VStack>
                             </DrawerBody>
-                            <DrawerFooter color={'blue.300'} borderTopWidth={'1px'}>
+                            <DrawerFooter color={'brand.primary'} borderTopWidth={'1px'}>
                                 <Box w={'100%'}>
                                     <Box as={Link} href={'/login'}>
                                         <Box onClick={onClose}>
@@ -92,7 +92,7 @@ const Header: React.FC = () => {
                                         </Box>
                                     </Box>
 
-                                    <Text align={'right'} color={'blue.300'}>
+                                    <Text mt={2} align={'right'} color={'brand.primary'}>
                                         Powered by PiXeL-invest UG
                                     </Text>
                                 </Box>
