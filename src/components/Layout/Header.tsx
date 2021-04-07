@@ -8,6 +8,7 @@ import {
     useMediaQuery,
     IconButton,
     useDisclosure, VStack, DrawerBody,
+    Text
 } from "@chakra-ui/react";
 import HeaderButton from "../Buttons/HeaderButton";
 import {HamburgerIcon} from "@chakra-ui/icons";
@@ -80,11 +81,15 @@ const Header: React.FC = () => {
                                     <DrawerButton>Buy</DrawerButton>
                                     <DrawerButton>Sell</DrawerButton>
                                     <DrawerButton>Account</DrawerButton>
-                                    <DrawerButton>Logout</DrawerButton>
                                 </VStack>
                             </DrawerBody>
                             <DrawerFooter color={'blue.300'} borderTopWidth={'1px'}>
-                                Powered by PiXeL-invest UG
+                                <VStack w={'100%'}>
+                                    <DrawerButton>Logout</DrawerButton>
+                                    <Text align={'right'} color={'blue.300'}>
+                                        Powered by PiXeL-invest UG
+                                    </Text>
+                                </VStack>
                             </DrawerFooter>
                         </DrawerContent>
                     </DrawerOverlay>
