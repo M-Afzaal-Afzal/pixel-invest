@@ -60,6 +60,7 @@ const Login: React.FC = () => {
                             <Input
                                 name={'password'}
                                 ref={passwordReg}
+                                type={'password'}
                                 bg={'white'}
                                 color={'blue.500'}
                                 errorBorderColor="red.200"
