@@ -10,11 +10,23 @@ type Inputs = {
 
 const Login: React.FC = () => {
 
-    const {handleSubmit, formState: {errors}, register} = useForm<Inputs>();
+    const {handleSubmit, errors, register} = useForm<Inputs>();
 
     const onSubmit = (data: Inputs) => {
         console.log(data)
     }
+
+    const userNameReg = register({
+        required: 'You must have to specify the user name',
+    })
+
+    const passwordReg = register({
+        required: 'You must have to specify the password',
+        minLength: {
+            value: 6,
+            message: 'You password must be of six or more characters'
+        }
+    })
 
     return (
         <Box w={'100%'} bg={'#11111B'}>
@@ -35,15 +47,8 @@ const Login: React.FC = () => {
                                 color={'blue.500'}
                                 errorBorderColor="red.200"
                                 placeholder="User Name"
-                                {...register(
-                                    `userName` as const,
-                                    {
-                                        required: {
-                                            value: true,
-                                            message: 'You must specify the user name'
-                                        },
-                                    }
-                                )}
+                                name={'userName'}
+                                ref={userNameReg}
                             />
                             <CFormErrorMessage>
                                 {errors?.userName && errors.userName.message}
@@ -53,23 +58,12 @@ const Login: React.FC = () => {
                         <FormControl mt={4} isInvalid={!!errors?.password}>
                             <FormLabel htmlFor="password">Password</FormLabel>
                             <Input
+                                name={'password'}
+                                ref={passwordReg}
                                 bg={'white'}
                                 color={'blue.500'}
                                 errorBorderColor="red.200"
                                 placeholder="Password"
-                                {...register(
-                                    `password` as const,
-                                    {
-                                        required: {
-                                            value: true,
-                                            message: 'You must have to specify the password'
-                                        },
-                                        minLength: {
-                                            value: 6,
-                                            message: 'You password must be of six or more characters'
-                                        },
-                                    }
-                                )}
 
                             />
                             <CFormErrorMessage>
