@@ -3,12 +3,7 @@ import {Box, Button, FormControl, FormLabel, Input} from "@chakra-ui/react";
 import {useForm} from "react-hook-form";
 import CFormErrorMessage from "../components/Form/CFormErrorMessage";
 
-interface Inputs {
-    userName: string;
-    password: string;
-}
-
-interface dataT {
+type Inputs = {
     userName: string;
     password: string;
 }
@@ -17,7 +12,7 @@ const Login: React.FC = () => {
 
     const {handleSubmit, formState: {errors}, register} = useForm<Inputs>();
 
-    const onSubmit = (data: dataT) => {
+    const onSubmit = (data: Inputs) => {
         console.log(data)
     }
 
@@ -41,7 +36,7 @@ const Login: React.FC = () => {
                                 errorBorderColor="red.200"
                                 placeholder="User Name"
                                 {...register(
-                                    'userName',
+                                    `userName` as const,
                                     {
                                         required: {
                                             value: true,
@@ -63,7 +58,7 @@ const Login: React.FC = () => {
                                 errorBorderColor="red.200"
                                 placeholder="Password"
                                 {...register(
-                                    'password',
+                                    `password` as const,
                                     {
                                         required: {
                                             value: true,
