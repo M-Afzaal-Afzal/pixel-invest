@@ -46,7 +46,9 @@ const Header: React.FC = () => {
                                 <Box>
                                     <HStack spacing={4}>
                                         <Box as={Link} href={'/dashboard'}>
-                                            <HeaderButton>Dashboard</HeaderButton>
+                                            <Box>
+                                                <HeaderButton>Dashboard</HeaderButton>
+                                            </Box>
                                         </Box>
                                         <HeaderButton>Buy</HeaderButton>
                                         <HeaderButton>Sell</HeaderButton>
@@ -81,8 +83,10 @@ const Header: React.FC = () => {
                             </DrawerHeader>
                             <DrawerBody>
                                 <VStack mt={4} spacing={2}>
-                                    <Box as={Link} href={'/dashboard'}>
-                                        <DrawerButton>Dashboard</DrawerButton>
+                                    <Box width={'100%'} onClick={onClose}>
+                                        <Box as={Link} href={'/dashboard'}>
+                                            <DrawerButton>Dashboard</DrawerButton>
+                                        </Box>
                                     </Box>
                                     <DrawerButton>Buy</DrawerButton>
                                     <DrawerButton>Sell</DrawerButton>
