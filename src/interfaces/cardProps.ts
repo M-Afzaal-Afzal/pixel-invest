@@ -1,9 +1,8 @@
 interface CardProps {
     heading: string;
-    firstPoint: string;
-    secondPoint: string;
-    thirdPoint: string;
-    orderedList?: boolean;
+    biggestAccounts?: { name: string; id: number; pixels: number }[];
+    myAccountInfo?: {value: number;pixels: number;balance: number};
 }
+
 
 export default CardProps;

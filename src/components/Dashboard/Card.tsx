@@ -4,7 +4,7 @@ import BodyText from "../Typography/BodyText";
 import CardProps from "../../interfaces/cardProps";
 import CListItem from "../ListItem/CListItem";
 
-const Card: React.FC<CardProps> = ({orderedList, heading, firstPoint, secondPoint, thirdPoint}) => {
+const Card: React.FC<CardProps> = ({ myAccountInfo, heading, biggestAccounts}) => {
     return (
         <Box
             p={8}
@@ -22,18 +22,22 @@ const Card: React.FC<CardProps> = ({orderedList, heading, firstPoint, secondPoin
 
             <VStack align={'left'} mt={4}>
                 {
-                    orderedList ? (
+                    !!myAccountInfo ? (
                         <>
-                            <BodyText>{firstPoint}</BodyText>
-                            <BodyText>{secondPoint}</BodyText>
-                            <BodyText>{thirdPoint}</BodyText>
+                            <BodyText>Value : {myAccountInfo?.value} €</BodyText>
+                            <BodyText>PiXeL : {myAccountInfo?.pixels}</BodyText>
+                            <BodyText>Balance : {myAccountInfo?.balance} €</BodyText>
+
                         </>
                     ) : (
                         <>
                             <OrderedList>
-                                <CListItem>{firstPoint}</CListItem>
-                                <CListItem mt={'.5rem'}>{secondPoint}</CListItem>
-                                <CListItem mt={'.5rem'}>{thirdPoint}</CListItem>
+                                {
+                                    biggestAccounts?.map(({name, id, pixels}) => (
+                                        <CListItem mt={'.5rem'}
+                                                   key={id}>{name.toUpperCase()} : {pixels} PiXeL</CListItem>
+                                    ))
+                                }
                             </OrderedList>
                         </>
                     )
@@ -44,4 +48,4 @@ const Card: React.FC<CardProps> = ({orderedList, heading, firstPoint, secondPoin
     );
 }
 
-export default Card;
+export default Card

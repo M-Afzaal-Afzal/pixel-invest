@@ -34,15 +34,14 @@ const Login: React.FC = () => {
 
             <Box mx={['2', '4', '8']} py={['4rem','6rem','8rem']} align={'center'}>
 
-                <Box p={['8','16','24']} maxW={'40rem'} rounded={'lg'}
-                     bgGradient={'linear(to-b,brand.primary,brand.secondary)'}>
+                <Box p={['8','16','24']}
+                     maxW={'40rem'}
+                     rounded={'lg'}
+                     bgGradient={'linear(to-b,brand.primary,brand.secondary)'}
+                >
                     <form onSubmit={handleSubmit(onSubmit)}>
                         <FormControl isInvalid={!!errors?.userName}>
                             <FormLabel htmlFor="name">User Name</FormLabel>
-                            {/* it is causing issues fro validation that's why we
-                            cant make it's own component. So we've to repeat that.
-                            Anyhow i've created CInput.tsx but it doen't work as expected
-                            because of some issues. As we've to pass ref. */}
                             <CInput
                                 placeholder="User Name"
                                 name={'userName'}

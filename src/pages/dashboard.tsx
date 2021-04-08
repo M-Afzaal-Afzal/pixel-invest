@@ -1,9 +1,29 @@
-import React from 'react';
+import React, {useState,useEffect} from 'react';
 import {Box, Container, Stack} from "@chakra-ui/react";
 import Chart from "../components/Dashboard/Chart";
 import Card from "../components/Dashboard/Card";
+import axios from "axios";
+
+type biggerAccountData = { id: number; name: string; pixels: number }[];
 
 const Dashboard: React.FC = () => {
+
+    const [biggestAccounts, setBiggestAccounts] = useState<biggerAccountData>([]);
+
+    console.log(biggestAccounts)
+
+    useEffect(() => {
+        axios.get('https://my-json-server.typicode.com/M-Afzaal-Afzal/pixel/db')
+            .then(res => {
+                setBiggestAccounts(res.data.biggestAccounts);
+            })
+            .catch(err => {
+                console.log(err.message);
+            })
+
+    }, []);
+
+
     return (
         <Box>
             {/*component for chart*/}
@@ -14,21 +34,17 @@ const Dashboard: React.FC = () => {
             </Box>
 
             <Container maxW={'container.xl'}>
-                <Stack spacing={8} mb={16} alignItems={'center'} justify={'space-around'} direction={['column',null,'row','row']}>
+                <Stack spacing={8} mb={16} alignItems={'center'} justify={'space-around'}
+                       direction={['column', null, 'row', 'row']}>
 
                     <Card
-                        heading={'My Account'}
-                        firstPoint={'one'}
-                        secondPoint={'two'}
-                        thirdPoint={'3rd'}
-                        orderedList
+                        heading={'Biggest Accounts'}
+                        biggestAccounts={biggestAccounts}
                     />
 
                     <Card
                         heading={'My Account'}
-                        firstPoint={'first'}
-                        secondPoint={'second'}
-                        thirdPoint={'third'}
+                        myAccountInfo={{value: 22,pixels: 333,balance: 333}}
                     />
 
                 </Stack>
