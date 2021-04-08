@@ -1,7 +1,7 @@
 import React from 'react';
-import {Button} from "@chakra-ui/react";
+import {Button,ButtonProps} from "@chakra-ui/react";
 
-const DrawerButton:React.FC<any> = ({children}) => {
+const DrawerButton = ({children,...props}: ButtonProps) => {
     return (
         <Button
             fontWeight={'normal'}
@@ -10,6 +10,7 @@ const DrawerButton:React.FC<any> = ({children}) => {
             fontSize={'1.3rem'}
             borderBottom={'.5px solid white'}
             size={'lg'}
+            {...props}
         >
             {children}
         </Button>

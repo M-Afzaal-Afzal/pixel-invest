@@ -1,9 +1,9 @@
 import React from 'react';
-import {Button} from "@chakra-ui/react";
+import {Button,ButtonProps} from "@chakra-ui/react";
 
-const FooterButton:React.FC<any> = ({children}) => {
+const FooterButton = ({children,...props}: ButtonProps) => {
     return (
-        <Button colorScheme={'white'} variant={'link'}>{children}</Button>
+        <Button colorScheme={'white'} variant={'link'} {...props}>{children}</Button>
 
     );
 };

@@ -1,7 +1,7 @@
 import React from 'react';
-import {FormErrorMessage} from "@chakra-ui/react";
+import {FormErrorMessage,FormErrorMessageProps} from "@chakra-ui/react";
 
-const CFormErrorMessage:React.FC<any> = ({children,...props}) => {
+const CFormErrorMessage = ({children,...props}: FormErrorMessageProps) => {
     return (
         <FormErrorMessage color={'yellow.200'} {...props}>
             {children}

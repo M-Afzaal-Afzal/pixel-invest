@@ -29,7 +29,7 @@ const Header: React.FC = () => {
 
 
     return (
-        <Box p={'4'} bgGradient={'linear(to-b,brand.secondary,brand.primary)'} boxShadow={'lg'}>
+        <Box position={'fixed'} top={0} width={'100%'} zIndex={20} left={0} p={'4'} bgGradient={'linear(to-b,brand.secondary,brand.primary)'} boxShadow={'lg'}>
             <Container maxW={'container.xl'}>
                 <Flex direction={'row'} justify={'space-between'}>
                     <Box>

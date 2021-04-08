@@ -1,9 +1,9 @@
 import React from 'react';
-import {Button} from "@chakra-ui/react";
+import {Button,ButtonProps} from "@chakra-ui/react";
 
-const HeaderButton: React.FC<any> = ({children,...props}) => {
+const HeaderButton = ({children,...props}: ButtonProps) => {
     return (
-        <Button colorScheme={'button'} {...props}>
+        <Button {...props}  colorScheme={'button'} {...props}>
             {children}
         </Button>
     );

@@ -1,7 +1,8 @@
 import React from 'react';
-import {Box, Button, FormControl, FormLabel, Input} from "@chakra-ui/react";
+import {Box, Button, FormControl, FormLabel} from "@chakra-ui/react";
 import {useForm} from "react-hook-form";
 import CFormErrorMessage from "../components/Form/CFormErrorMessage";
+import CInput from "../components/Form/CInput";
 
 type Inputs = {
     userName: string;
@@ -42,10 +43,7 @@ const Login: React.FC = () => {
                             cant make it's own component. So we've to repeat that.
                             Anyhow i've created CInput.tsx but it doen't work as expected
                             because of some issues. As we've to pass ref. */}
-                            <Input
-                                bg={'white'}
-                                color={'blue.500'}
-                                errorBorderColor="red.200"
+                            <CInput
                                 placeholder="User Name"
                                 name={'userName'}
                                 ref={userNameReg}
@@ -57,13 +55,10 @@ const Login: React.FC = () => {
 
                         <FormControl mt={4} isInvalid={!!errors?.password}>
                             <FormLabel htmlFor="password">Password</FormLabel>
-                            <Input
+                            <CInput
                                 name={'password'}
                                 ref={passwordReg}
                                 type={'password'}
-                                bg={'white'}
-                                color={'blue.500'}
-                                errorBorderColor="red.200"
                                 placeholder="Password"
 
                             />
