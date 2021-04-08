@@ -1,7 +1,7 @@
 import React from 'react';
-import {Button,ButtonProps} from "@chakra-ui/react";
+import {Button,ButtonProps,forwardRef} from "@chakra-ui/react";
 
-const DrawerButton = ({children,...props}: ButtonProps) => {
+const DrawerButton = forwardRef<ButtonProps,'button'>(({children,...props},ref) => {
     return (
         <Button
             fontWeight={'normal'}
@@ -10,11 +10,12 @@ const DrawerButton = ({children,...props}: ButtonProps) => {
             fontSize={'1.3rem'}
             borderBottom={'.5px solid white'}
             size={'lg'}
+            ref={ref}
             {...props}
         >
             {children}
         </Button>
     );
-};
+})
 
 export default DrawerButton;

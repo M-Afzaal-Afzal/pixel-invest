@@ -29,7 +29,8 @@ const Header: React.FC = () => {
 
 
     return (
-        <Box position={'fixed'} top={0} width={'100%'} zIndex={20} left={0} p={'4'} bgGradient={'linear(to-b,brand.secondary,brand.primary)'} boxShadow={'lg'}>
+        <Box position={'fixed'} top={0} width={'100%'} zIndex={20} left={0} p={'4'}
+             bgGradient={'linear(to-b,brand.secondary,brand.primary)'} boxShadow={'lg'}>
             <Container maxW={'container.xl'}>
                 <Flex direction={'row'} justify={'space-between'}>
                     <Box>
@@ -44,7 +45,9 @@ const Header: React.FC = () => {
                             <>
                                 <Box>
                                     <HStack spacing={4}>
-                                        <HeaderButton>Dashboard</HeaderButton>
+                                        <Box as={Link} href={'/dashboard'}>
+                                            <HeaderButton>Dashboard</HeaderButton>
+                                        </Box>
                                         <HeaderButton>Buy</HeaderButton>
                                         <HeaderButton>Sell</HeaderButton>
                                         <HeaderButton>Account</HeaderButton>
@@ -78,7 +81,9 @@ const Header: React.FC = () => {
                             </DrawerHeader>
                             <DrawerBody>
                                 <VStack mt={4} spacing={2}>
-                                    <DrawerButton>Dashboard</DrawerButton>
+                                    <Box as={Link} href={'/dashboard'}>
+                                        <DrawerButton>Dashboard</DrawerButton>
+                                    </Box>
                                     <DrawerButton>Buy</DrawerButton>
                                     <DrawerButton>Sell</DrawerButton>
                                     <DrawerButton>Account</DrawerButton>
