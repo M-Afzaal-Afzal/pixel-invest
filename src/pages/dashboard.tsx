@@ -1,7 +1,7 @@
 import React, {useState,useEffect} from 'react';
 import {Box, Container, Stack} from "@chakra-ui/react";
 import Chart from "../components/Dashboard/Chart";
-import Card from "../components/Dashboard/Card";
+import Card from "../components/Cards/Card";
 import axios from "axios";
 
 type biggerAccountData = { id: number; name: string; pixels: number }[];
@@ -34,7 +34,8 @@ const Dashboard: React.FC = () => {
             </Box>
 
             <Container maxW={'container.xl'}>
-                <Stack spacing={8} mb={16} alignItems={'center'} justify={'space-around'}
+                <Stack spacing={8} mb={16}  alignItems={['center',null,'stretch']}
+                       justify={'space-around'}
                        direction={['column', null, 'row', 'row']}>
 
                     <Card

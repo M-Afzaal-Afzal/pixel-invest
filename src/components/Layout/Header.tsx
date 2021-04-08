@@ -50,8 +50,12 @@ const Header: React.FC = () => {
                                                 <HeaderButton>Dashboard</HeaderButton>
                                             </Box>
                                         </Box>
-                                        <HeaderButton>Buy</HeaderButton>
-                                        <HeaderButton>Sell</HeaderButton>
+                                        <Box as={Link} href={'/buy'}>
+                                            <HeaderButton>Buy</HeaderButton>
+                                        </Box>
+                                        <Box as={Link} href={'/sell'}>
+                                            <HeaderButton>Sell</HeaderButton>
+                                        </Box>
                                         <HeaderButton>Account</HeaderButton>
                                     </HStack>
                                 </Box>
@@ -76,10 +80,8 @@ const Header: React.FC = () => {
                                 borderBottomWidth="1px"
                                 color={'blue'}
                             >
-
                                 <Heading color={'blue'}>Logo</Heading>
                                 <DrawerCloseButton borderRadius={'50%'}/>
-
                             </DrawerHeader>
                             <DrawerBody>
                                 <VStack mt={4} spacing={2}>
@@ -88,8 +90,16 @@ const Header: React.FC = () => {
                                             <DrawerButton>Dashboard</DrawerButton>
                                         </Box>
                                     </Box>
-                                    <DrawerButton>Buy</DrawerButton>
-                                    <DrawerButton>Sell</DrawerButton>
+                                    <Box width={'100%'} onClick={onClose}>
+                                        <Box as={Link} href={'/buy'}>
+                                            <DrawerButton>Buy</DrawerButton>
+                                        </Box>
+                                    </Box>
+                                    <Box width={'100%'} onClick={onClose}>
+                                        <Box as={Link} href={'/sell'}>
+                                            <DrawerButton>Sell</DrawerButton>
+                                        </Box>
+                                    </Box>
                                     <DrawerButton>Account</DrawerButton>
                                 </VStack>
                             </DrawerBody>

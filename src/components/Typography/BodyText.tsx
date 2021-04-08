@@ -1,7 +1,7 @@
 import React from 'react';
-import {Text} from '@chakra-ui/react'
+import {Text,TextProps} from '@chakra-ui/react'
 
-const BodyText:React.FC = ({children,...props}) => {
+const BodyText:React.FC<TextProps> = ({children,...props}) => {
     return (
         <Text
             fontWeight={'light'}

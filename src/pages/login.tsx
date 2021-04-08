@@ -1,5 +1,5 @@
 import React from 'react';
-import {Box, Button, FormControl, FormLabel} from "@chakra-ui/react";
+import {Box, Button, FormControl, FormLabel, Heading} from "@chakra-ui/react";
 import {useForm} from "react-hook-form";
 import CFormErrorMessage from "../components/Form/CFormErrorMessage";
 import CInput from "../components/Form/CInput";
@@ -35,10 +35,15 @@ const Login: React.FC = () => {
             <Box mx={['2', '4', '8']} py={['4rem','6rem','8rem']} align={'center'}>
 
                 <Box p={['8','16','24']}
+                     pt={['4','8','12']}
                      maxW={'40rem'}
                      rounded={'lg'}
                      bgGradient={'linear(to-b,brand.primary,brand.secondary)'}
                 >
+                    <Heading mb={['4','8','12']}>
+                        Login
+                    </Heading>
+
                     <form onSubmit={handleSubmit(onSubmit)}>
                         <FormControl isInvalid={!!errors?.userName}>
                             <FormLabel htmlFor="name">User Name</FormLabel>
