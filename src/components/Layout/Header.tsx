@@ -180,7 +180,7 @@ const Header: React.FC = () => {
             <Container maxW={'container.xl'}>
                 <Flex direction={'row'} justify={'space-between'}>
                     <Box>
-                        <Box as={Link} href={'/dashboard'}>
+                        <Box as={Link} href={'/'}>
                             <HStack>
                                 <Box _hover={{cursor:'pointer'}} bg={'brand.secondary'} w={'40px'} h={'40px'}>
                                 </Box>
@@ -236,7 +236,7 @@ const Header: React.FC = () => {
                             <DrawerBody>
                                 <VStack mt={4} spacing={2}>
                                     <Box width={'100%'} onClick={onClose}>
-                                        <Box as={Link} href={'/dashboard'}>
+                                        <Box as={Link} href={'/'}>
                                             <DrawerButton>Dashboard</DrawerButton>
                                         </Box>
                                     </Box>

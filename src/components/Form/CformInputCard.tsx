@@ -170,8 +170,6 @@ const CFromInputCard: React.FC<CFormInputCardProps> = ({options, type}) => {
             break;
     }
 
-    console.log(errors)
-
     return (
         <Box p={['8', '16', '24']}
              pt={['4', '8', '12']}

@@ -10,8 +10,6 @@ const Dashboard: React.FC = () => {
 
     const [biggestAccounts, setBiggestAccounts] = useState<biggerAccountData>([]);
 
-    console.log(biggestAccounts)
-
     useEffect(() => {
         axios.get('https://my-json-server.typicode.com/M-Afzaal-Afzal/peerstu-api/biggestAccounts')
             .then(res => {
