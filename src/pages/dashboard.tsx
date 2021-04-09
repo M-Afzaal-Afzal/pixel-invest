@@ -13,9 +13,10 @@ const Dashboard: React.FC = () => {
     console.log(biggestAccounts)
 
     useEffect(() => {
-        axios.get('https://my-json-server.typicode.com/M-Afzaal-Afzal/pixel/db')
+        axios.get('https://my-json-server.typicode.com/M-Afzaal-Afzal/peerstu-api/biggestAccounts')
             .then(res => {
-                setBiggestAccounts(res.data.biggestAccounts);
+                setBiggestAccounts(res.data);
+
             })
             .catch(err => {
                 console.log(err.message);

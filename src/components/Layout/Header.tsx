@@ -1,20 +1,22 @@
 import React from 'react';
 import {
-    Container,
     Box,
-    HStack,
-    Flex,
-    Heading,
-    useMediaQuery,
-    IconButton,
-    useDisclosure, VStack, DrawerBody,
-    Text,
+    Container,
     Drawer,
+    DrawerBody,
+    DrawerCloseButton,
+    DrawerContent,
     DrawerFooter,
     DrawerHeader,
     DrawerOverlay,
-    DrawerContent,
-    DrawerCloseButton,
+    Flex,
+    Heading,
+    HStack,
+    IconButton,
+    Text,
+    useDisclosure,
+    useMediaQuery,
+    VStack,
 } from "@chakra-ui/react";
 import HeaderButton from "../Buttons/HeaderButton";
 import {HamburgerIcon} from "@chakra-ui/icons";
@@ -27,6 +29,150 @@ const Header: React.FC = () => {
 
     const [isLargerThan64em] = useMediaQuery("(min-width: 64em)")
 
+    // const remoteApi = {
+    //     biggestAccounts: [
+    //         {
+    //             "id": 1,
+    //             "name": "peerstu",
+    //             "pixels": 1039.038
+    //         },
+    //         {
+    //             "id": 2,
+    //             "name": "M Afzaal Afzal",
+    //             "pixels": 739.028
+    //         },
+    //         {
+    //             "id": 3,
+    //             "name": "peerstu",
+    //             "pixels": 289.018
+    //         }
+    //     ],
+    //     myAccount: {
+    //
+    //         id: 'userId',
+    //         username: 'Peerstu',
+    //         email: 'peerstu@gmail.com',
+    //         password: 'password',
+    //         paymentMethod: 'paypal',
+    //         balance: 9999,
+    //         pixels: 1000,
+    //         tradesHistory: [
+    //             {
+    //                 sellerUserId: '3fsd',
+    //                 buyerUserId: '3322',
+    //                 pixels: 2423,
+    //                 pricePerPixel: 333,
+    //                 timestamp: 'dummy',
+    //                 sum: 23232,
+    //                 fee: 3333
+    //             }, {
+    //                 sellerUserId: '3fsd',
+    //                 buyerUserId: '3322',
+    //                 pixels: 2423,
+    //                 pricePerPixel: 333,
+    //                 timestamp: 'dummy',
+    //                 sum: 23232,
+    //                 fee: 3333
+    //             }, {
+    //                 sellerUserId: '3fsd',
+    //                 buyerUserId: '3322',
+    //                 pixels: 2423,
+    //                 pricePerPixel: 333,
+    //                 timestamp: 'dummy',
+    //                 sum: 23232,
+    //                 fee: 3333
+    //             },
+    //         ],
+    //         orders: [
+    //             {
+    //                 userID: 'fsfds',
+    //                 orderType: '',
+    //                 orderLimit: 88,
+    //                 amount: 234,
+    //                 validUntil: '2021-06-16'
+    //             }, {
+    //                 userID: 'khkfsfsjhkjh',
+    //                 orderType: '',
+    //                 orderLimit: 342,
+    //                 amount: 242,
+    //                 validUntil: '2021-06-16'
+    //             }, {
+    //                 userID: 'ksfshkjhkjh',
+    //                 orderType: '',
+    //                 orderLimit: 3545,
+    //                 amount: 2342,
+    //                 validUntil: '2021-06-16'
+    //             },],
+    //         offers: [
+    //             [
+    //                 {
+    //                     userID: '123',
+    //                     offerType: 'dummy',
+    //                     offerLimit: 444,
+    //                     amount: 333,
+    //                     validUntil: '2021-06-16'
+    //                 }, {
+    //                 userID: '12ada3',
+    //                 offerType: 'dummy',
+    //                 offerLimit: 232,
+    //                 amount: 111,
+    //                 validUntil: '2021-06-16'
+    //             }, {
+    //                 userID: '12DD3',
+    //                 offerType: 'dummy',
+    //                 offerLimit: 1117,
+    //                 amount: 888,
+    //                 validUntil: '2021-06-16'
+    //             },
+    //             ],
+    //         ],
+    //     },
+    //     openOffers: [
+    //         {
+    //             userID: '123',
+    //             offerType: 'dummy',
+    //             offerLimit: 444,
+    //             amount: 333,
+    //             validUntil: '2021-06-16'
+    //         }, {
+    //             userID: '1dd23',
+    //             offerType: 'dummy',
+    //             offerLimit: 232,
+    //             amount: 111,
+    //             validUntil: '2021-06-16'
+    //         }, {
+    //             userID: '1sd23',
+    //             offerType: 'dummy',
+    //             offerLimit: 1117,
+    //             amount: 888,
+    //             validUntil: '2021-06-16'
+    //         },
+    //     ],
+    //     openOrders: [
+    //         {
+    //             userID: '23sd23',
+    //             orderType: 'dummy',
+    //             orderLimit: 888,
+    //             amount: 788,
+    //             validUntil: '2021-06-16',
+    //         }, {
+    //             userID: '2ds323',
+    //             orderType: 'dummy',
+    //             orderLimit: 888,
+    //             amount: 788,
+    //             validUntil: '2021-06-16',
+    //         }, {
+    //             userID: '2323',
+    //             orderType: 'dummy',
+    //             orderLimit: 888,
+    //             amount: 788,
+    //             validUntil: '2021-06-16',
+    //         },
+    //     ],
+    //     pixel: {
+    //         value: 100
+    //     },
+    // }
 
     return (
         <Box position={'fixed'} top={0} width={'100%'} zIndex={20} left={0} p={'4'}
@@ -56,7 +202,9 @@ const Header: React.FC = () => {
                                         <Box as={Link} href={'/sell'}>
                                             <HeaderButton>Sell</HeaderButton>
                                         </Box>
-                                        <HeaderButton>Account</HeaderButton>
+                                        <Box as={Link} href={'/account'}>
+                                            <HeaderButton>Account</HeaderButton>
+                                        </Box>
                                     </HStack>
                                 </Box>
                                 <Box>
@@ -100,7 +248,11 @@ const Header: React.FC = () => {
                                             <DrawerButton>Sell</DrawerButton>
                                         </Box>
                                     </Box>
-                                    <DrawerButton>Account</DrawerButton>
+                                    <Box width={'100%'} onClick={onClose}>
+                                        <Box as={Link} href={'/account'}>
+                                            <DrawerButton>Account</DrawerButton>
+                                        </Box>
+                                    </Box>
                                 </VStack>
                             </DrawerBody>
                             <DrawerFooter color={'brand.primary'} borderTopWidth={'1px'}>

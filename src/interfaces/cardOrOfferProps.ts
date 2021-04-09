@@ -1,6 +1,6 @@
 interface orderOfferProps {
     data: {id: number;pixel: number,limit: number}[];
-    order: boolean;
+    type: 'order' | 'offer';
 }
 
 export default orderOfferProps;

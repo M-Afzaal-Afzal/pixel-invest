@@ -4,7 +4,7 @@ import BodyText from "../Typography/BodyText";
 import CardProps from "../../interfaces/cardProps";
 import CListItem from "../ListItem/CListItem";
 
-const Card: React.FC<CardProps> = ({myAccountInfo, heading, biggestAccounts}) => {
+const Card: React.FC<CardProps> = ({myAccountInfo,personalRanking, heading, biggestAccounts}) => {
 
     return (
         <Box
@@ -23,7 +23,19 @@ const Card: React.FC<CardProps> = ({myAccountInfo, heading, biggestAccounts}) =>
 
             <VStack alignItems={'center'} align={'left'} mt={4}>
                 {
-                    !!myAccountInfo ? (
+                    !!personalRanking && (
+                        <>
+                            <OrderedList>
+                                {
+                                    personalRanking?.map(({name, id, pixels}) => (
+                                        <CListItem mt={'.5rem'}
+                                                   key={id}>{name.toUpperCase()} : {pixels} PiXeL</CListItem>
+                                    ))
+                                }
+                            </OrderedList>
+                        </>
+                    ) ||
+                    !!myAccountInfo && (
                         <>
                             {
                                 myAccountInfo?.value && (
@@ -58,7 +70,7 @@ const Card: React.FC<CardProps> = ({myAccountInfo, heading, biggestAccounts}) =>
 
 
                         </>
-                    ) : (
+                    ) ||  !!biggestAccounts && (
                         <>
                             <OrderedList>
                                 {

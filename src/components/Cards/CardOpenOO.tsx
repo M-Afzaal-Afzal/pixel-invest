@@ -5,8 +5,20 @@ import cardOpenOOProps from '../../interfaces/cardOpenOOProps'
 // OO for offer and order
 
 
-const CardOpenOO:React.FC<cardOpenOOProps> = ({heading,data,order}) => {
+const CardOpenOO: React.FC<cardOpenOOProps> = ({type, data}) => {
+
+    let heading: string;
+
+    switch (type) {
+        case 'order':
+            heading = 'Open Orders';
+            break;
+        case 'offer':
+            heading = 'Open Offers';
+    }
+
     return (
+
         <Box
             p={8}
             maxW={'30rem'}
@@ -22,10 +34,10 @@ const CardOpenOO:React.FC<cardOpenOOProps> = ({heading,data,order}) => {
             </Box>
 
             {
-                data?.map((value,index) => (
+                data?.map((value, index) => (
                     <Box>
                         <BodyText color={'yellow.300'} mt={2} fontWeight={'bold'}>
-                            {order ? 'Order' : 'Offer'} Position: {index + 1}
+                            {type} Position: {index + 1}
                         </BodyText>
                         <BodyText>
                             PiXeL: {value.pixel}
