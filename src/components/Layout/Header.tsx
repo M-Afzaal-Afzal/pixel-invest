@@ -180,11 +180,13 @@ const Header: React.FC = () => {
             <Container maxW={'container.xl'}>
                 <Flex direction={'row'} justify={'space-between'}>
                     <Box>
-                        <HStack>
-                            <Box bg={'brand.secondary'} w={'40px'} h={'40px'}>
-                            </Box>
-                            <Heading fontSize={'lg'}>PiXel-Invest</Heading>
-                        </HStack>
+                        <Box as={Link} href={'/dashboard'}>
+                            <HStack>
+                                <Box _hover={{cursor:'pointer'}} bg={'brand.secondary'} w={'40px'} h={'40px'}>
+                                </Box>
+                                <Heading _hover={{cursor: 'pointer'}} fontSize={'lg'}>PiXel-Invest</Heading>
+                            </HStack>
+                        </Box>
                     </Box>
                     {
                         isLargerThan64em ? (
