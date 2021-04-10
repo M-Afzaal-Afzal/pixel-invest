@@ -1,5 +1,8 @@
+import offerInterface from './offerInterface';
+import orderInterface from './orderInterface';
+
 interface CardOpenOOProps {
-    data?: { pixel: number; id: number; limit: number }[];
+    data?: offerInterface[] | orderInterface[];
     type: 'order' | 'offer';
 }
 

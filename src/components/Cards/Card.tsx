@@ -23,19 +23,21 @@ const Card: React.FC<CardProps> = ({myAccountInfo,personalRanking, heading, bigg
 
             <VStack alignItems={'center'} align={'left'} mt={4}>
                 {
-                    !!personalRanking && (
+                    personalRanking && (
                         <>
                             <OrderedList>
                                 {
-                                    personalRanking?.map(({name, id, pixels}) => (
+                                    personalRanking.map(({name, id, pixels}) => (
                                         <CListItem mt={'.5rem'}
                                                    key={id}>{name.toUpperCase()} : {pixels} PiXeL</CListItem>
                                     ))
                                 }
                             </OrderedList>
                         </>
-                    ) ||
-                    !!myAccountInfo && (
+                    )
+                }
+                {
+                    myAccountInfo && (
                         <>
                             {
                                 myAccountInfo?.value && (
@@ -57,24 +59,28 @@ const Card: React.FC<CardProps> = ({myAccountInfo,personalRanking, heading, bigg
 
                             {
                                 myAccountInfo?.totalTrades && (
-                                    <BodyText>Balance : {myAccountInfo?.totalTrades} €</BodyText>
+                                    <BodyText>Total Trades : {myAccountInfo?.totalTrades} €</BodyText>
                                 )
                             }
 
                             {
                                 myAccountInfo?.totalEarnings && (
-                                    <BodyText>Balance : {myAccountInfo?.totalEarnings} €</BodyText>
+                                    <BodyText>Total Earnings : {myAccountInfo?.totalEarnings} €</BodyText>
                                 )
                             }
 
 
 
                         </>
-                    ) ||  !!biggestAccounts && (
+                    )
+                }
+
+                {
+                    biggestAccounts && (
                         <>
                             <OrderedList>
                                 {
-                                    biggestAccounts?.map(({name, id, pixels}) => (
+                                    biggestAccounts.map(({name, id, pixels}) => (
                                         <CListItem mt={'.5rem'}
                                                    key={id}>{name.toUpperCase()} : {pixels} PiXeL</CListItem>
                                     ))
@@ -83,7 +89,6 @@ const Card: React.FC<CardProps> = ({myAccountInfo,personalRanking, heading, bigg
                         </>
                     )
                 }
-
             </VStack>
         </Box>
     );

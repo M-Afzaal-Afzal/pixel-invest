@@ -3,13 +3,17 @@ import "focus-visible/dist/focus-visible"
 
 import {AppProps} from 'next/app'
 import Layout from "../components/Layout/Layout";
+import {Provider} from 'react-redux'
+import store from '../store/store'
 
-function MyApp({Component, pageProps}: AppProps) {
+const MyApp = ({Component, pageProps}: AppProps) => {
     return (
         <Chakra cookies={pageProps.cookies}>
-            <Layout>
-                <Component {...pageProps} />
-            </Layout>
+            <Provider store={store}>
+                <Layout>
+                    <Component {...pageProps} />
+                </Layout>
+            </Provider>
         </Chakra>
     )
 }

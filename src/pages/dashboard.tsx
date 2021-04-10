@@ -1,26 +1,29 @@
-import React, {useState,useEffect} from 'react';
+import React from 'react';
 import {Box, Container, Stack} from "@chakra-ui/react";
 import Chart from "../components/Dashboard/Chart";
 import Card from "../components/Cards/Card";
-import axios from "axios";
-
-type biggerAccountData = { id: number; name: string; pixels: number }[];
+import {useAppSelector} from "../store/hooks";
+import {selectBiggestAccounts} from "../store/biggestAccounts/biggestAccountsSlice";
 
 const Dashboard: React.FC = () => {
 
-    const [biggestAccounts, setBiggestAccounts] = useState<biggerAccountData>([]);
+    const biggestAccounts = useAppSelector(selectBiggestAccounts)
 
-    useEffect(() => {
-        axios.get('https://my-json-server.typicode.com/M-Afzaal-Afzal/peerstu-api/biggestAccounts')
-            .then(res => {
-                setBiggestAccounts(res.data);
+    console.log(biggestAccounts);
 
-            })
-            .catch(err => {
-                console.log(err.message);
-            })
+    // const [biggestAccounts, setBiggestAccounts] = useState<biggestAccountInterface[]>([]);
 
-    }, []);
+    // useEffect(() => {
+    //     axios.get('https://my-json-server.typicode.com/M-Afzaal-Afzal/peerstu-api/biggestAccounts')
+    //         .then(res => {
+    //             setBiggestAccounts(res.data);
+    //
+    //         })
+    //         .catch(err => {
+    //             console.log(err.message);
+    //         })
+    //
+    // }, []);
 
 
     return (

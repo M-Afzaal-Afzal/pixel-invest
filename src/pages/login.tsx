@@ -3,6 +3,8 @@ import {Box, Button, FormControl, FormLabel, Heading} from "@chakra-ui/react";
 import {useForm} from "react-hook-form";
 import CFormErrorMessage from "../components/Form/CFormErrorMessage";
 import CInput from "../components/Form/CInput";
+import {useAppDispatch} from "../store/hooks";
+import {getCurrentUser} from "../store/currentUser/currentUserSlice";
 
 type Inputs = {
     userName: string;
@@ -13,8 +15,11 @@ const Login: React.FC = () => {
 
     const {handleSubmit, errors, register} = useForm<Inputs>();
 
+    const dispatch = useAppDispatch();
+
     const onSubmit = (data: Inputs) => {
         console.log(data)
+        dispatch(getCurrentUser());
     }
 
     const userNameReg = register({

@@ -1,5 +1,7 @@
+import orderInterface from './orderInterface';
+
 interface orderOfferProps {
-    data: {id: number;pixel: number,limit: number}[];
+    data: orderInterface[];
     type: 'order' | 'offer';
 }
 

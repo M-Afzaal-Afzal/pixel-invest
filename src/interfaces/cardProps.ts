@@ -1,8 +1,10 @@
+import biggestAccountInterface from "./biggestAccountInterface";
+
 interface CardProps {
     heading: string;
 
-    biggestAccounts?: { name: string; id: number; pixels: number }[];
-    personalRanking?: { name: string; id: number; pixels: number }[];
+    biggestAccounts?: biggestAccountInterface[] | null;
+    personalRanking?: { name: string; id: number; pixels: number }[] | null;
 
     myAccountInfo?: {
         value: number;
