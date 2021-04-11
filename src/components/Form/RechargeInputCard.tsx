@@ -1,10 +1,11 @@
 import React from 'react';
-import {Box, Button, FormControl, FormLabel, Heading} from "@chakra-ui/react";
+import {Box, FormControl, FormLabel, Heading} from "@chakra-ui/react";
 import CInput from "./CInput";
 import CFormErrorMessage from "./CFormErrorMessage";
 import CSelect from "../Select/CSelect";
 import BodyText from "../Typography/BodyText";
 import {useForm} from "react-hook-form";
+import ButtonSecondary from "../Buttons/ButtonSecondary";
 
 type Inputs = {
     amount: string;
@@ -126,9 +127,9 @@ const WithdrawInputCard: React.FC<orderInputCardProps> = ({ options}) => {
                     </BodyText>
                 </Box>
                 <Box align={'center'}>
-                    <Button mt={8} colorScheme="buttonTwo" type="submit">
+                    <ButtonSecondary mt={8} type={'submit'}>
                         Recharge
-                    </Button>
+                    </ButtonSecondary>
                 </Box>
             </form>
         </Box>

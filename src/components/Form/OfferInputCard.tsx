@@ -1,5 +1,5 @@
 import React from 'react';
-import {Box, Button, FormControl, FormLabel, Heading} from "@chakra-ui/react";
+import {Box, FormControl, FormLabel, Heading} from "@chakra-ui/react";
 import CInput from "./CInput";
 import CFormErrorMessage from "./CFormErrorMessage";
 import CSelect from "../Select/CSelect";
@@ -7,6 +7,7 @@ import BodyText from "../Typography/BodyText";
 import {useForm} from "react-hook-form";
 import {useAppSelector} from "../../store/hooks";
 import {selectPixelValue} from "../../store/pixelValue/pixelValue";
+import ButtonSecondary from "../Buttons/ButtonSecondary";
 
 type Inputs = {
     amount: string;
@@ -120,9 +121,9 @@ const OfferInputCard: React.FC<orderInputCardProps> = ({options}) => {
                     </BodyText>
                 </Box>
                 <Box align={'center'}>
-                    <Button mt={8} colorScheme="buttonTwo" type="submit">
+                    <ButtonSecondary mt={8} type="submit">
                         Create Offers
-                    </Button>
+                    </ButtonSecondary>
                 </Box>
             </form>
         </Box>

@@ -1,8 +1,9 @@
 import React from 'react';
-import {Box, Button, FormControl, FormLabel, Heading} from "@chakra-ui/react";
+import {Box, FormControl, FormLabel, Heading} from "@chakra-ui/react";
 import {useForm} from "react-hook-form";
 import CInput from "./CInput";
 import CFormErrorMessage from "./CFormErrorMessage";
+import ButtonSecondary from "../Buttons/ButtonSecondary";
 
 type Inputs = {
     name: string;
@@ -141,9 +142,9 @@ const CFormInputCard = () => {
                     </CFormErrorMessage>
                 </FormControl>
                 <Box align={'center'}>
-                    <Button mt={8} colorScheme="buttonTwo" type="submit">
+                    <ButtonSecondary mt={8} type="submit">
                         Apply Changes
-                    </Button>
+                    </ButtonSecondary>
                 </Box>
             </form>
         </Box>

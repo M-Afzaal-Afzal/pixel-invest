@@ -1,5 +1,5 @@
 import React, {useEffect} from 'react';
-import {Box, Button, FormControl, FormLabel, Heading, useToast} from "@chakra-ui/react";
+import {Box, FormControl, FormLabel, Heading, useToast} from "@chakra-ui/react";
 import {useForm} from "react-hook-form";
 import CFormErrorMessage from "../components/Form/CFormErrorMessage";
 import CInput from "../components/Form/CInput";
@@ -11,6 +11,7 @@ import {
 } from "../store/currentUser/currentUserSlice";
 import {useRouter} from "next/router";
 import {Fade} from "react-awesome-reveal";
+import ButtonSecondary from "../components/Buttons/ButtonSecondary";
 
 type Inputs = {
     userName: string;
@@ -119,9 +120,9 @@ const Login: React.FC = () => {
                                 </CFormErrorMessage>
                             </FormControl>
 
-                            <Button isLoading={isLoading} mt={8} colorScheme="buttonTwo" type="submit">
+                            <ButtonSecondary isLoading={isLoading} mt={8} type="submit">
                                 Login
-                            </Button>
+                            </ButtonSecondary>
                         </form>
                     </Box>
                 </Fade>

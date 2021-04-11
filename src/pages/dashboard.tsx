@@ -37,7 +37,7 @@ const Dashboard: React.FC = () => {
             </Box>
 
             <Container maxW={'container.xl'}>
-                <Fade triggerOnce direction={'up'}>
+
                     <Stack spacing={8} alignItems={['center', null, 'stretch']}
                            justify={'space-around'}
                            direction={['column', null, 'row', 'row']}>
@@ -53,7 +53,7 @@ const Dashboard: React.FC = () => {
                         />
 
                     </Stack>
-                </Fade>
+
             </Container>
 
         </Box>

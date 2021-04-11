@@ -7,20 +7,20 @@ const ButtonSecondary = forwardRef<ButtonProps, 'button'>(({children, ...props},
     const MotionButton = motion(Button);
 
     return (
-        <Button
-            as={MotionButton}
+        <MotionButton
             whileHover={{
                 scale: '1.0777',
             }}
+
             whileTap={{
                 scale: '1'
             }}
-            {...props}
             ref={ref}
             colorScheme={'buttonTwo'}
-            {...props}>
+            {...props}
+            >
             {children}
-        </Button>
+        </MotionButton>
     );
 });
 
