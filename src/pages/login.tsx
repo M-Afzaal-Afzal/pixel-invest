@@ -10,6 +10,7 @@ import {
     selectIsLoadingCU
 } from "../store/currentUser/currentUserSlice";
 import {useRouter} from "next/router";
+import {Fade} from "react-awesome-reveal";
 
 type Inputs = {
     userName: string;
@@ -78,51 +79,52 @@ const Login: React.FC = () => {
         >
 
             <Box mx={['2', '4', '8']} py={['4rem', '6rem', '8rem']} align={'center'}>
-
-                <Box p={['8', '16', '24']}
-                     pt={['4', '8', '12']}
-                     maxW={'40rem'}
-                     rounded={'lg'}
-                     boxShadow={'rgb(19 15 235 / 20%) 2px 4px 40px'}
-                     // bgGradient={'linear(to-b,brand.primary,brand.secondary)'}
-                    bg={'brand.primary'}
-                >
-                    <Heading mb={['4', '8', '12']}>
-                        Login
-                    </Heading>
-
-                    <form onSubmit={handleSubmit(onSubmit)}>
-                        <FormControl isInvalid={!!errors?.userName}>
-                            <FormLabel htmlFor="name">User Name</FormLabel>
-                            <CInput
-                                placeholder="User Name"
-                                name={'userName'}
-                                ref={userNameReg}
-                            />
-                            <CFormErrorMessage>
-                                {errors?.userName && errors.userName.message}
-                            </CFormErrorMessage>
-                        </FormControl>
-
-                        <FormControl mt={4} isInvalid={!!errors?.password}>
-                            <FormLabel htmlFor="password">Password</FormLabel>
-                            <CInput
-                                name={'password'}
-                                ref={passwordReg}
-                                type={'password'}
-                                placeholder="Password"
-
-                            />
-                            <CFormErrorMessage>
-                                {errors?.password && errors.password.message}
-                            </CFormErrorMessage>
-                        </FormControl>
-
-                        <Button isLoading={isLoading} mt={8} colorScheme="buttonTwo" type="submit">
+                <Fade triggerOnce direction={'up'}>
+                    <Box p={['8', '16', '24']}
+                         pt={['4', '8', '12']}
+                         maxW={'40rem'}
+                         rounded={'lg'}
+                         boxShadow={'rgb(19 15 235 / 20%) 2px 4px 40px'}
+                        // bgGradient={'linear(to-b,brand.primary,brand.secondary)'}
+                         bg={'brand.primary'}
+                    >
+                        <Heading mb={['4', '8', '12']}>
                             Login
-                        </Button>
-                    </form>
-                </Box>
+                        </Heading>
+
+                        <form onSubmit={handleSubmit(onSubmit)}>
+                            <FormControl isInvalid={!!errors?.userName}>
+                                <FormLabel htmlFor="name">User Name</FormLabel>
+                                <CInput
+                                    placeholder="User Name"
+                                    name={'userName'}
+                                    ref={userNameReg}
+                                />
+                                <CFormErrorMessage>
+                                    {errors?.userName && errors.userName.message}
+                                </CFormErrorMessage>
+                            </FormControl>
+
+                            <FormControl mt={4} isInvalid={!!errors?.password}>
+                                <FormLabel htmlFor="password">Password</FormLabel>
+                                <CInput
+                                    name={'password'}
+                                    ref={passwordReg}
+                                    type={'password'}
+                                    placeholder="Password"
+
+                                />
+                                <CFormErrorMessage>
+                                    {errors?.password && errors.password.message}
+                                </CFormErrorMessage>
+                            </FormControl>
+
+                            <Button isLoading={isLoading} mt={8} colorScheme="buttonTwo" type="submit">
+                                Login
+                            </Button>
+                        </form>
+                    </Box>
+                </Fade>
 
             </Box>
 

@@ -8,6 +8,7 @@ import {selectCurrentUser} from "../store/currentUser/currentUserSlice";
 import {useRouter} from "next/router";
 import RechargeInputCard from "../components/Form/RechargeInputCard";
 import WithdrawInputCard from "../components/Form/WithdrawInputCard";
+import {Fade} from "react-awesome-reveal";
 
 const Account = () => {
 
@@ -30,37 +31,40 @@ const Account = () => {
                           gridGap={[12, null, null, '2rem']}>
 
                         <Box>
-                            <Box>
-                                <RechargeInputCard options={['Paypal', 'Visa', 'Klarna']}/>
-                                {/*<CformInputCard options={} type={'recharge'}/>*/}
-                            </Box>
-                            <Box mt={16}>
-                                <WithdrawInputCard options={['Paypal', 'Visa', 'Klarna']}/>
-                            </Box>
-                            <Box mt={16}>
-                                <CInfoInputCard/>
-                            </Box>
+                            <Fade cascade triggerOnce direction={'up'}>
+                                <Box>
+                                    <RechargeInputCard options={['Paypal', 'Visa', 'Klarna']}/>
+                                    {/*<CformInputCard options={} type={'recharge'}/>*/}
+                                </Box>
+                                <Box mt={16}>
+                                    <WithdrawInputCard options={['Paypal', 'Visa', 'Klarna']}/>
+                                </Box>
+                                <Box mt={16}>
+                                    <CInfoInputCard/>
+                                </Box>
+                            </Fade>
 
                         </Box>
 
                         <Box order={[-1, null, null, 0]}>
                             <Box top={['null', 'null', 'null', 20]} position={['relative', null, null, 'sticky']}>
-
-                                <Box>
-                                    <Card
-                                        heading={'My Account'}
-                                        myAccountInfo={userAccountInfo}
-                                    />
-                                </Box>
-                                {/*top={['null','null','null',490]}*/}
-                                <Box position={['relative', null, null, 'sticky']} mt={12}>
-                                    <Card heading={'Personal Ranking'}
-                                          personalRanking={[{name: 'afzaal', id: 2, pixels: 333}, {
-                                              name: 'afzaal',
-                                              id: 22,
-                                              pixels: 333
-                                          }]}/>
-                                </Box>
+                                <Fade triggerOnce direction={'up'}>
+                                    <Box>
+                                        <Card
+                                            heading={'My Account'}
+                                            myAccountInfo={userAccountInfo}
+                                        />
+                                    </Box>
+                                    {/*top={['null','null','null',490]}*/}
+                                    <Box position={['relative', null, null, 'sticky']} mt={12}>
+                                        <Card heading={'Personal Ranking'}
+                                              personalRanking={[{name: 'afzaal', id: 2, pixels: 333}, {
+                                                  name: 'afzaal',
+                                                  id: 22,
+                                                  pixels: 333
+                                              }]}/>
+                                    </Box>
+                                </Fade>
                             </Box>
                         </Box>
 

@@ -10,8 +10,9 @@ import {useAppSelector} from "../../store/hooks";
 import {selectCurrentUser} from "../../store/currentUser/currentUserSlice";
 import OfferInputCard from "../Form/OfferInputCard";
 import OrderInputCard from "../Form/OrderInputCard";
+import {Fade} from "react-awesome-reveal";
 
-const OrderOrOfferPage: React.FC<orderOfferProps> = ({type,data}) => {
+const OrderOrOfferPage: React.FC<orderOfferProps> = ({type, data}) => {
 
 
     const userAccountInfo = useAppSelector(selectCurrentUser);
@@ -19,40 +20,49 @@ const OrderOrOfferPage: React.FC<orderOfferProps> = ({type,data}) => {
     return (
         <Box w={'100%'} bg={'brand.background'}>
 
-            <Box mx={['2', '4', '8']} py={['4rem', '6rem', '8rem']} align={'center'}>
+            <Box mx={['2', '4', '8']} py={['3rem', '4rem', '6rem']} align={'center'}>
 
                 {
                     (type === 'offer') && (
-                        <OfferInputCard options={['select','option 1','option 2']}/>
+                        <Fade triggerOnce cascade direction={'up'}>
+                            <OfferInputCard options={['select', 'option 1', 'option 2']}/>
+                        </Fade>
                     )
                 }
 
                 {
                     (type === 'order') && (
-                        <OrderInputCard options={['select','option 1','option 2']}/>
+                        <Fade triggerOnce direction={'up'} cascade>
+                            <OrderInputCard options={['select', 'option 1', 'option 2']}/>
+                        </Fade>
                     )
                 }
-               {/*<CformInputCard options={} type={type}/>*/}
+
+                {/*<CformInputCard options={} type={type}/>*/}
 
                 <Container mt={20} maxW={'container.xl'}>
-                    <Stack spacing={8} mb={16} justify={'space-around'}
-                           alignItems={['center', null, 'stretch']}
-                           direction={['column', null, 'row', 'row']}
-                    >
+                    <Fade triggerOnce cascade direction={'up'}>
 
-                       <CardOpenOO data={data} type={type}/>
+                        <Stack spacing={8} mb={16} justify={'space-around'}
+                               alignItems={['center', null, 'stretch']}
+                               direction={['column', null, 'row', 'row']}
+                        >
 
-                        <Card
-                            heading={'My Account'}
-                            myAccountInfo={userAccountInfo}
-                        />
+                            <CardOpenOO data={data} type={type}/>
+                            <Card
+                                heading={'My Account'}
+                                myAccountInfo={userAccountInfo}
+                            />
 
-                    </Stack>
+                        </Stack>
+                    </Fade>
                 </Container>
                 <Box my={20} align={'center'}>
-                    <Box p={6} align={'center'} maxW={'50rem'} h={'30rem'}>
-                        <Chart/>
-                    </Box>
+                    <Fade direction={'up'}>
+                        <Box p={6} align={'center'} maxW={'50rem'} h={'30rem'}>
+                            <Chart/>
+                        </Box>
+                    </Fade>
                 </Box>
             </Box>
         </Box>
