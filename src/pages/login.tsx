@@ -1,5 +1,5 @@
 import React, {useEffect} from 'react';
-import {Box, Button, FormControl, FormLabel, Heading} from "@chakra-ui/react";
+import {Box, Button, FormControl, FormLabel, Heading, useToast} from "@chakra-ui/react";
 import {useForm} from "react-hook-form";
 import CFormErrorMessage from "../components/Form/CFormErrorMessage";
 import CInput from "../components/Form/CInput";
@@ -25,6 +25,8 @@ const Login: React.FC = () => {
 
     const isLoggedIn = useAppSelector(selectCurrentUser);
     const isLoading = useAppSelector(selectIsLoadingCU);
+    const toast = useToast();
+
 
     const userNameReg = register({
         required: 'You must have to specify the user name',
@@ -42,11 +44,29 @@ const Login: React.FC = () => {
         if (!!isLoggedIn?.userName) {
             router.replace('/dashboard');
         }
-    },[isLoggedIn])
+    }, [isLoggedIn])
 
-    const onSubmit = (data: Inputs) => {
+    const onSubmit = async (data: Inputs) => {
         console.log(data)
-        dispatch(getCurrentUser());
+        const resultAction = await dispatch(getCurrentUser());
+
+        // code for handling the error and showing the dialog
+        if (getCurrentUser.fulfilled.match(resultAction)) {
+            toast({
+                title: 'Login successful',
+                status: 'success',
+                isClosable: true,
+            })
+
+        } else {
+            if (resultAction.error) {
+                toast({
+                    title: resultAction.error.message,
+                    status: 'error',
+                    isClosable: true,
+                })
+            }
+        }
     }
 
     return (
