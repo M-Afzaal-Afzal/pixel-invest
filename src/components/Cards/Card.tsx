@@ -3,8 +3,27 @@ import {Box, Heading, OrderedList, VStack} from "@chakra-ui/react";
 import BodyText from "../Typography/BodyText";
 import CardProps from "../../interfaces/cardProps";
 import CListItem from "../ListItem/CListItem";
+import {useAppSelector} from "../../store/hooks";
+import {selectPixelValue} from "../../store/pixelValue/pixelValue";
 
 const Card: React.FC<CardProps> = ({myAccountInfo,personalRanking, heading, biggestAccounts}) => {
+
+    const pixelValue = useAppSelector(selectPixelValue);
+
+    console.log(pixelValue)
+
+    const totalEarnings = myAccountInfo?.tradesHistory.reduce((prevValue,curValue) => {
+        return {
+            sum:  prevValue.sum + curValue.sum
+        }
+    },{sum: 0});
+
+    const totalTrades = myAccountInfo?.tradesHistory.reduce((prevValue,curValue) => {
+        return {
+            pixels:  prevValue.pixels + curValue.pixels
+        }
+    },{pixels: 0});
+
 
     return (
         <Box
@@ -42,7 +61,7 @@ const Card: React.FC<CardProps> = ({myAccountInfo,personalRanking, heading, bigg
                         <>
                             {
                                 myAccountInfo?.pixels && (
-                                    <BodyText>Value : {myAccountInfo?.pixels * 2} €</BodyText>
+                                    <BodyText>Value : {pixelValue ? (myAccountInfo?.pixels * pixelValue) : "___"} €</BodyText>
                                 )
                             }
 
@@ -58,17 +77,19 @@ const Card: React.FC<CardProps> = ({myAccountInfo,personalRanking, heading, bigg
                                 )
                             }
 
-                            {/*{*/}
-                            {/*    myAccountInfo?.totalTrades && (*/}
-                            {/*        <BodyText>Total Trades : {myAccountInfo?.totalTrades} €</BodyText>*/}
-                            {/*    )*/}
-                            {/*}*/}
+                            {
+                                myAccountInfo?.tradesHistory && (
+                                    <BodyText>
+                                        Total Trades : {totalTrades ? totalTrades?.pixels : '___'} €
+                                    </BodyText>
+                                )
+                            }
 
-                            {/*{*/}
-                            {/*    myAccountInfo?.totalEarnings && (*/}
-                            {/*        <BodyText>Total Earnings : {myAccountInfo?.totalEarnings} €</BodyText>*/}
-                            {/*    )*/}
-                            {/*}*/}
+                            {
+                                myAccountInfo?.tradesHistory && (
+                                    <BodyText>Total Earnings : {totalEarnings ? totalEarnings?.sum: '___'} €</BodyText>
+                                )
+                            }
 
 
 

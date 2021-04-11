@@ -5,6 +5,8 @@ import CFormErrorMessage from "./CFormErrorMessage";
 import CSelect from "../Select/CSelect";
 import BodyText from "../Typography/BodyText";
 import {useForm} from "react-hook-form";
+import {useAppSelector} from "../../store/hooks";
+import {selectPixelValue} from "../../store/pixelValue/pixelValue";
 
 type Inputs = {
     amount: string;
@@ -19,6 +21,8 @@ interface orderInputCardProps {
 const OrderInputCard: React.FC<orderInputCardProps> = ({options}) => {
 
     const {handleSubmit,watch, errors, register} = useForm<Inputs>();
+
+    const pixelValue = useAppSelector(selectPixelValue)
 
     const amountValue = watch('amount');
 
@@ -109,7 +113,7 @@ const OrderInputCard: React.FC<orderInputCardProps> = ({options}) => {
                 <Box mt={8}>
                     <BodyText>
                         {
-                                `1920 PiXeLs for ${amountValue ? amountValue : '___'} €`
+                                `${pixelValue && amountValue ? (+amountValue / +pixelValue): '___'} PiXeLs for ${amountValue ? amountValue : '___'} €`
                         }
 
                     </BodyText>

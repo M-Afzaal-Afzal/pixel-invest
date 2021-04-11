@@ -8,7 +8,7 @@ interface userInterface {
     email: string;
     pixels: number;
     balance: number;
-    tradeHistory: tradeInterface[];
+    tradesHistory: tradeInterface[];
     orders: orderInterface[];
     offers: offerInterface[];
 }

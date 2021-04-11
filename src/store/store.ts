@@ -5,6 +5,7 @@ import currentUserReducer from "./currentUser/currentUserSlice";
 import biggestAccountsReducer from '../store/biggestAccounts/biggestAccountsSlice';
 import openOrdersReducer from '../store/openOrders/openOrdersSlice';
 import openOffersReducer from '../store/openOffers/openOffersSlice';
+import pixelValueReducer from '../store/pixelValue/pixelValue'
 
 const store = configureStore({
     reducer: {
@@ -12,6 +13,7 @@ const store = configureStore({
         biggestAccounts: biggestAccountsReducer,
         openOrders: openOrdersReducer,
         openOffers: openOffersReducer,
+        pixel: pixelValueReducer,
     },
 })
 
