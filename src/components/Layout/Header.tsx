@@ -18,7 +18,7 @@ import {
     useMediaQuery,
     VStack,
 } from "@chakra-ui/react";
-import HeaderButton from "../Buttons/HeaderButton";
+import ButtonPrimary from "../Buttons/ButtonPrimary";
 import {HamburgerIcon} from "@chakra-ui/icons";
 import DrawerButton from "../Buttons/DrawerButton";
 import Link from "next/link";
@@ -215,17 +215,17 @@ const Header: React.FC = () => {
                                                 <>
                                                     <Box as={Link} href={'/dashboard'}>
                                                         <Box>
-                                                            <HeaderButton>Dashboard</HeaderButton>
+                                                            <ButtonPrimary>Dashboard</ButtonPrimary>
                                                         </Box>
                                                     </Box>
                                                     <Box as={Link} href={'/buy'}>
-                                                        <HeaderButton>Buy</HeaderButton>
+                                                        <ButtonPrimary>Buy</ButtonPrimary>
                                                     </Box>
                                                     <Box as={Link} href={'/sell'}>
-                                                        <HeaderButton>Sell</HeaderButton>
+                                                        <ButtonPrimary>Sell</ButtonPrimary>
                                                     </Box>
                                                     <Box as={Link} href={'/account'}>
-                                                        <HeaderButton>Account</HeaderButton>
+                                                        <ButtonPrimary>Account</ButtonPrimary>
                                                     </Box>
                                                 </>
 
@@ -245,11 +245,11 @@ const Header: React.FC = () => {
                                     {
                                         isLoggedIn ? (
                                             <Box onClick={logoutHandler}>
-                                                <HeaderButton>Logout</HeaderButton>
+                                                <ButtonPrimary>Logout</ButtonPrimary>
                                             </Box>
                                         ) : (
                                             <Box as={Link} href={'/login'}>
-                                                <HeaderButton>Login</HeaderButton>
+                                                <ButtonPrimary>Login</ButtonPrimary>
                                             </Box>
                                         )
                                     }
