@@ -1,4 +1,6 @@
-import { configureStore } from '@reduxjs/toolkit'
+import {combineReducers, configureStore, getDefaultMiddleware} from '@reduxjs/toolkit'
+import storage from 'redux-persist/lib/storage'
+
 // ...
 
 import currentUserReducer from "./currentUser/currentUserSlice";
@@ -7,14 +9,40 @@ import openOrdersReducer from '../store/openOrders/openOrdersSlice';
 import openOffersReducer from '../store/openOffers/openOffersSlice';
 import pixelValueReducer from '../store/pixelValue/pixelValue'
 
+import {
+    persistReducer,
+    FLUSH,
+    REHYDRATE,
+    PAUSE,
+    PERSIST,
+    PURGE,
+    REGISTER,
+} from 'redux-persist'
+
+const persistConfig = {
+    key: 'root',
+    version: 1,
+    storage,
+}
+
+const rootReducer = combineReducers({
+    currentUser: currentUserReducer,
+    biggestAccounts: biggestAccountsReducer,
+    openOrders: openOrdersReducer,
+    openOffers: openOffersReducer,
+    pixel: pixelValueReducer,
+})
+
+const persistedReducer = persistReducer(persistConfig, rootReducer)
+
+
 const store = configureStore({
-    reducer: {
-        currentUser: currentUserReducer,
-        biggestAccounts: biggestAccountsReducer,
-        openOrders: openOrdersReducer,
-        openOffers: openOffersReducer,
-        pixel: pixelValueReducer,
-    },
+    reducer:persistedReducer,
+    middleware: getDefaultMiddleware({
+        serializableCheck: {
+            ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
+        },
+    }),
 })
 
 // Infer the `RootState` and `AppDispatch` types from the store itself
