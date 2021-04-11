@@ -31,7 +31,7 @@ const colors = {
         primary: '#5893d4',
         secondary: '#1f3c88',
         tertiary: '#070d59',
-        background: '#d6e4f0',
+        background: '#dfe9f3',
         black: '#11111B'
     },
     button: {

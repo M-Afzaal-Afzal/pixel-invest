@@ -12,7 +12,8 @@ const Card: React.FC<CardProps> = ({myAccountInfo,personalRanking, heading, bigg
             maxW={'30rem'}
             w={'100%'}
             rounded={'xl'}
-            boxShadow={'2xl'}
+            // boxShadow={'2xl'}
+            boxShadow={'rgb(19 15 235 / 20%) 2px 4px 40px'}
             bgGradient={'linear(to-b,brand.primary,brand.secondary)'}
         >
             <Box>

@@ -179,6 +179,7 @@ const CFromInputCard: React.FC<CFormInputCardProps> = ({options, type}) => {
              pt={['4', '8', '12']}
              maxW={'40rem'}
              rounded={'lg'}
+             boxShadow={'rgb(19 15 235 / 20%) 2px 4px 40px'}
              bgGradient={'linear(to-b,brand.primary,brand.secondary)'}
         >
             <Heading mb={['4', '8', '12']}>

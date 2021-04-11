@@ -27,7 +27,6 @@ const Login: React.FC = () => {
 
     const isLoggedIn = useAppSelector(selectCurrentUser);
     const isLoading = useAppSelector(selectIsLoadingCU);
-    const errorMessage = useAppSelector(selectErrorMessageCU);
 
     const userNameReg = register({
         required: 'You must have to specify the user name',
@@ -43,7 +42,7 @@ const Login: React.FC = () => {
 
     useEffect(() => {
         if (!!isLoggedIn?.userName) {
-            router.replace('/');
+            router.replace('/dashboard');
         }
     },[isLoggedIn])
 
@@ -53,7 +52,10 @@ const Login: React.FC = () => {
     }
 
     return (
-        <Box w={'100%'} bg={'brand.tertiary'}>
+        <Box
+            w={'100%'}
+            bg={'brand.tertiary'}
+        >
 
             <Box mx={['2', '4', '8']} py={['4rem', '6rem', '8rem']} align={'center'}>
 
@@ -61,6 +63,7 @@ const Login: React.FC = () => {
                      pt={['4', '8', '12']}
                      maxW={'40rem'}
                      rounded={'lg'}
+                     boxShadow={'rgb(19 15 235 / 20%) 2px 4px 40px'}
                      bgGradient={'linear(to-b,brand.primary,brand.secondary)'}
                 >
                     <Heading mb={['4', '8', '12']}>
@@ -99,9 +102,6 @@ const Login: React.FC = () => {
                         </Button>
                     </form>
                 </Box>
-                <CErrorModal error={!!errorMessage}>
-                    {errorMessage}
-                </CErrorModal>
 
             </Box>
 

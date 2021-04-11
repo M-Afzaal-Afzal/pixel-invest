@@ -190,16 +190,16 @@ const Header: React.FC = () => {
 
     return (
         <Box position={'fixed'} top={0} width={'100%'} zIndex={20} left={0} p={'4'}
-             // bgGradient={'linear(to-b,brand.secondary,brand.primary)'}
-            bg={'brand.secondary'}
-             boxShadow={'lg'}
+            // bgGradient={'linear(to-b,brand.secondary,brand.primary)'}
+             bg={'brand.secondary'}
+             boxShadow={'xl'}
         >
             <Container maxW={'container.xl'}>
                 <Flex alignItems={'center'} direction={'row'} justify={'space-between'}>
                     <Box>
                         <Box as={Link} href={'/'}>
                             <HStack>
-                                <Box _hover={{cursor: 'pointer'}} bg={'brand.secondary'} w={'40px'} h={'40px'}>
+                                <Box _hover={{cursor: 'pointer'}} bg={'brand.primary'} w={'40px'} h={'40px'}>
                                 </Box>
                                 <Heading _hover={{cursor: 'pointer'}} fontSize={'lg'}>PiXel-Invest</Heading>
                             </HStack>
@@ -233,7 +233,8 @@ const Header: React.FC = () => {
                                                 <Box justifyContent={'center'} align={'center'} display={'flex'}
                                                      alignItems={'center'} m={'auto'}>
                                                     <Heading fontSize={'1.5rem'} color={'white'}>Login To Buy Or
-                                                        Sell</Heading>
+                                                        Sell
+                                                    </Heading>
                                                 </Box>
                                             )
                                         }
@@ -256,7 +257,7 @@ const Header: React.FC = () => {
                                 </Box>
                             </>
                         ) : (
-                            <IconButton onClick={onOpen} isRound colorScheme={'blue'} aria-label={'Navigation Icon'}>
+                            <IconButton onClick={onOpen} isRound colorScheme={'button'} aria-label={'Navigation Icon'}>
                                 <HamburgerIcon w={7} h={7}/>
                             </IconButton>
                         )

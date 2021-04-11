@@ -24,7 +24,7 @@ const CardOpenOO: React.FC<cardOpenOOProps> = ({type, data}) => {
             maxW={'30rem'}
             w={'100%'}
             rounded={'xl'}
-            boxShadow={'2xl'}
+            boxShadow={'rgb(19 15 235 / 20%) 2px 4px 40px'}
             bgGradient={'linear(to-b,brand.primary,brand.secondary)'}
         >
             <Box>

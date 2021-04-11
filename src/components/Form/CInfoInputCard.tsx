@@ -70,6 +70,7 @@ const CFormInputCard = () => {
              maxW={'40rem'}
              rounded={'lg'}
              bgGradient={'linear(to-b,brand.primary,brand.secondary)'}
+             boxShadow={'rgb(19 15 235 / 20%) 2px 4px 40px'}
         >
             <Heading mb={['4', '8', '12']}>
                 Info
