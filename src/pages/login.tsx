@@ -52,11 +52,13 @@ const Login: React.FC = () => {
 
         // code for handling the error and showing the dialog
         if (getCurrentUser.fulfilled.match(resultAction)) {
-            toast({
-                title: 'Login successful',
-                status: 'success',
-                isClosable: true,
-            })
+            if (resultAction.payload) {
+                toast({
+                    title: 'Login successful',
+                    status: 'success',
+                    isClosable: true,
+                })
+            }
 
         } else {
             if (resultAction.error) {
@@ -82,7 +84,8 @@ const Login: React.FC = () => {
                      maxW={'40rem'}
                      rounded={'lg'}
                      boxShadow={'rgb(19 15 235 / 20%) 2px 4px 40px'}
-                     bgGradient={'linear(to-b,brand.primary,brand.secondary)'}
+                     // bgGradient={'linear(to-b,brand.primary,brand.secondary)'}
+                    bg={'brand.primary'}
                 >
                     <Heading mb={['4', '8', '12']}>
                         Login
@@ -115,7 +118,7 @@ const Login: React.FC = () => {
                             </CFormErrorMessage>
                         </FormControl>
 
-                        <Button isLoading={isLoading} mt={8} colorScheme="button" type="submit">
+                        <Button isLoading={isLoading} mt={8} colorScheme="buttonTwo" type="submit">
                             Login
                         </Button>
                     </form>

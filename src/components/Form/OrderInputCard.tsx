@@ -55,7 +55,8 @@ const OrderInputCard: React.FC<orderInputCardProps> = ({options}) => {
              maxW={'40rem'}
              rounded={'lg'}
              boxShadow={'rgb(19 15 235 / 20%) 2px 4px 40px'}
-             bgGradient={'linear(to-b,brand.primary,brand.secondary)'}
+             // bgGradient={'linear(to-b,brand.primary,brand.secondary)'}
+            bg={'brand.primary'}
         >
             <Heading mb={['4', '8', '12']}>
                 {'Create Order'}
@@ -65,6 +66,7 @@ const OrderInputCard: React.FC<orderInputCardProps> = ({options}) => {
                 <FormControl isInvalid={!!errors.amount}>
                     <FormLabel htmlFor="amount">Amount</FormLabel>
                     <CInput
+                        min={0}
                         placeholder={'Amount'}
                         name={'amount'}
                         ref={amountReg}
@@ -119,7 +121,7 @@ const OrderInputCard: React.FC<orderInputCardProps> = ({options}) => {
                     </BodyText>
                 </Box>
                 <Box align={'center'}>
-                    <Button mt={8} colorScheme="button" type="submit">
+                    <Button mt={8} colorScheme="buttonTwo" type="submit">
                         Create Orders
                     </Button>
                 </Box>

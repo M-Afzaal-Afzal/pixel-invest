@@ -25,7 +25,8 @@ const CardOpenOO: React.FC<cardOpenOOProps> = ({type, data}) => {
             w={'100%'}
             rounded={'xl'}
             boxShadow={'rgb(19 15 235 / 20%) 2px 4px 40px'}
-            bgGradient={'linear(to-b,brand.primary,brand.secondary)'}
+            // bgGradient={'linear(to-b,brand.primary,brand.secondary)'}
+            bg={'brand.primary'}
         >
             <Box>
                 <Heading fontSize={'3xl'} align={'center'}>

@@ -33,7 +33,8 @@ const Card: React.FC<CardProps> = ({myAccountInfo,personalRanking, heading, bigg
             rounded={'xl'}
             // boxShadow={'2xl'}
             boxShadow={'rgb(19 15 235 / 20%) 2px 4px 40px'}
-            bgGradient={'linear(to-b,brand.primary,brand.secondary)'}
+            bg={'brand.primary'}
+            // bgGradient={'linear(to-b,brand.primary,brand.secondary)'}
         >
             <Box>
                 <Heading fontSize={'3xl'} align={'center'}>

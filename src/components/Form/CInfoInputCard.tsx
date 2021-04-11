@@ -69,8 +69,9 @@ const CFormInputCard = () => {
              pt={['4', '8', '12']}
              maxW={'40rem'}
              rounded={'lg'}
-             bgGradient={'linear(to-b,brand.primary,brand.secondary)'}
+             // bgGradient={'linear(to-b,brand.primary,brand.secondary)'}
              boxShadow={'rgb(19 15 235 / 20%) 2px 4px 40px'}
+             bg={'brand.primary'}
         >
             <Heading mb={['4', '8', '12']}>
                 Info
@@ -140,7 +141,7 @@ const CFormInputCard = () => {
                     </CFormErrorMessage>
                 </FormControl>
                 <Box align={'center'}>
-                    <Button mt={8} colorScheme="blue" type="submit">
+                    <Button mt={8} colorScheme="buttonTwo" type="submit">
                         Apply Changes
                     </Button>
                 </Box>
