@@ -4,7 +4,6 @@ interface infoProps {
     photoURL: string;
     title: string;
     rightImage: boolean;
-
 };
 
 export default infoProps;

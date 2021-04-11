@@ -34,16 +34,17 @@ const CardOpenOO: React.FC<cardOpenOOProps> = ({type, data}) => {
             </Box>
 
             {
+                //@ts-ignore
                 data && data.map((value, index) => (
                     <Box>
                         <BodyText color={'yellow.300'} mt={2} fontWeight={'bold'}>
                             {type} Position: {index + 1}
                         </BodyText>
                         <BodyText>
-                            PiXeL: {value.pixels}
+                            PiXeL: {value.amount}
                         </BodyText>
                         <BodyText>
-                            Limit: {value.limit} €
+                            Limit: {value.offerLimit} €
                         </BodyText>
                     </Box>
                 ))

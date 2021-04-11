@@ -7,11 +7,9 @@ import {useAppDispatch, useAppSelector} from "../store/hooks";
 import {
     getCurrentUser,
     selectCurrentUser,
-    selectErrorMessageCU,
     selectIsLoadingCU
 } from "../store/currentUser/currentUserSlice";
 import {useRouter} from "next/router";
-import CErrorModal from "../components/Modal/CErrorModal";
 
 type Inputs = {
     userName: string;

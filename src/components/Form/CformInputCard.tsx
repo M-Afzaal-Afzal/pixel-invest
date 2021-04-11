@@ -20,28 +20,6 @@ const CFromInputCard: React.FC<CFormInputCardProps> = ({options, type}) => {
 
     const {handleSubmit,watch, errors, register} = useForm<Inputs>();
 
-    const onSubmit = (data: Inputs) => {
-        switch (type) {
-            case 'order':
-                console.log('order component')
-                console.log(data);
-                break;
-            case "offer":
-                console.log('order component')
-                console.log(data);
-                break;
-            case "recharge":
-                console.log('offer component')
-                console.log(data)
-                break;
-            case "withdraw":
-                console.log('Withdraw component')
-                console.log(data)
-                break;
-        }
-
-    }
-
     const amountReg = register({
         required: {
             value: true,
@@ -71,6 +49,8 @@ const CFromInputCard: React.FC<CFormInputCardProps> = ({options, type}) => {
         }
     })
 
+
+
     // here some dynamic work
 
     let heading: string;
@@ -90,9 +70,9 @@ const CFromInputCard: React.FC<CFormInputCardProps> = ({options, type}) => {
     let selectInputText: string;
     let selectInputName: string;
 
-
     // button text
     let buttonText: string | null = null;
+
 
     switch (type) {
         case 'order':
@@ -170,9 +150,32 @@ const CFromInputCard: React.FC<CFormInputCardProps> = ({options, type}) => {
             break;
     }
 
-    const firstInputValue = watch(firstInputName)
+    const firstInputValue = watch(firstInputName);
+    const selectInputValue = watch(selectInputName);
 
     console.log(firstInputValue);
+
+    const onSubmit = (data: Inputs) => {
+        switch (type) {
+            case 'order':
+                console.log('order component')
+                console.log(data);
+                break;
+            case "offer":
+                console.log('order component')
+                console.log(data);
+                break;
+            case "recharge":
+                console.log('offer component')
+                console.log(data)
+                break;
+            case "withdraw":
+                console.log('Withdraw component')
+                console.log(data)
+                break;
+        }
+
+    }
 
     return (
         <Box p={['8', '16', '24']}
@@ -209,6 +212,7 @@ const CFromInputCard: React.FC<CFormInputCardProps> = ({options, type}) => {
                         name={selectInputName}
                         placeholder="Select"
                         ref={selectReg}
+                        defaultValue={options[0]}
                     >
                         {
                             options?.map((opt) => (
@@ -237,7 +241,14 @@ const CFromInputCard: React.FC<CFormInputCardProps> = ({options, type}) => {
                 </FormControl>
                 <Box mt={8}>
                     <BodyText>
-                        1920 PiXeLs for 1542,23 €
+                        {
+                            (type === 'order' || type === 'offer') ? (
+                                `1920 PiXeLs for ${firstInputValue ? firstInputValue : '___'} €`
+                            ): (
+                                `${type.toUpperCase()} ${firstInputValue ? firstInputValue : '___'} € ${type === "recharge" ? 'from' : 'to'} ${selectInputValue ? selectInputValue : '___'}`
+                            )
+                        }
+
                     </BodyText>
                 </Box>
                 <Box align={'center'}>

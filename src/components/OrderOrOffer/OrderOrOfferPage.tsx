@@ -6,6 +6,8 @@ import Card from "../Cards/Card";
 import Chart from "../Dashboard/Chart";
 import orderOfferProps from "../../interfaces/cardOrOfferProps";
 import CformInputCard from "../Form/CformInputCard";
+import {useAppSelector} from "../../store/hooks";
+import {selectCurrentUser} from "../../store/currentUser/currentUserSlice";
 
 const OrderOrOfferPage: React.FC<orderOfferProps> = ({type,data}) => {
 
@@ -45,6 +47,8 @@ const OrderOrOfferPage: React.FC<orderOfferProps> = ({type,data}) => {
     //     ]
     // }
 
+    const userAccountInfo = useAppSelector(selectCurrentUser);
+
     return (
         <Box w={'100%'} bg={'brand.background'}>
 
@@ -62,7 +66,7 @@ const OrderOrOfferPage: React.FC<orderOfferProps> = ({type,data}) => {
 
                         <Card
                             heading={'My Account'}
-                            myAccountInfo={{value: 22, pixels: 333, balance: 333}}
+                            myAccountInfo={userAccountInfo}
                         />
 
                     </Stack>

@@ -1,16 +1,19 @@
 import React, {useEffect} from 'react';
 import {Box, Container, Grid} from "@chakra-ui/react";
-import CformInputCard from "../components/Form/CformInputCard";
+// import CformInputCard from "../components/Form/CformInputCard";
 import Card from "../components/Cards/Card";
 import CInfoInputCard from "../components/Form/CInfoInputCard";
 import {useAppSelector} from "../store/hooks";
 import {selectCurrentUser} from "../store/currentUser/currentUserSlice";
 import {useRouter} from "next/router";
+import RechargeInputCard from "../components/Form/RechargeInputCard";
+import WithdrawInputCard from "../components/Form/WithdrawInputCard";
 
 const Account = () => {
 
     const isLoggedIn = useAppSelector(selectCurrentUser);
     const router = useRouter();
+    const userAccountInfo = useAppSelector(selectCurrentUser);
 
     useEffect(() => {
         if (!isLoggedIn?.userName) {
@@ -28,10 +31,11 @@ const Account = () => {
 
                         <Box>
                             <Box>
-                                <CformInputCard options={['Paypal', 'Visa', 'Klarna']} type={'recharge'}/>
+                                <RechargeInputCard options={['Paypal', 'Visa', 'Klarna']}/>
+                                {/*<CformInputCard options={} type={'recharge'}/>*/}
                             </Box>
                             <Box mt={16}>
-                                <CformInputCard options={['Paypal', 'Visa', 'Klarna']} type={'withdraw'}/>
+                                <WithdrawInputCard options={['Paypal', 'Visa', 'Klarna']}/>
                             </Box>
                             <Box mt={16}>
                                 <CInfoInputCard/>
@@ -45,13 +49,7 @@ const Account = () => {
                                 <Box>
                                     <Card
                                         heading={'My Account'}
-                                        myAccountInfo={{
-                                            value: 22,
-                                            pixels: 333,
-                                            balance: 333,
-                                            totalTrades: 3333,
-                                            totalEarnings: 33333
-                                        }}
+                                        myAccountInfo={userAccountInfo}
                                     />
                                 </Box>
                                 {/*top={['null','null','null',490]}*/}
