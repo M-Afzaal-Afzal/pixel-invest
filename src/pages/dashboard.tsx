@@ -10,6 +10,7 @@ import {useRouter} from "next/router";
 const Dashboard: React.FC = () => {
 
     const biggestAccounts = useAppSelector(selectBiggestAccounts)
+    const userAccountInfo = useAppSelector(selectCurrentUser);
 
     console.log(biggestAccounts);
 
@@ -44,7 +45,7 @@ const Dashboard: React.FC = () => {
 
                     <Card
                         heading={'My Account'}
-                        myAccountInfo={{value: 22,pixels: 333,balance: 333}}
+                        myAccountInfo={userAccountInfo}
                     />
 
                 </Stack>

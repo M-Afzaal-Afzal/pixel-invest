@@ -3,10 +3,11 @@ import type {RootState} from '../store'
 
 // Define a type for the slice state
 import axios from "axios";
+import offerInterface from "../../interfaces/offerInterface";
 // import offerInterface from '../../interfaces/offerInterface';
 
 interface OpenOrdersSliceTypes {
-    openOffers: {id: number;pixels: number;limit: number}[] | null;
+    openOffers: offerInterface[] | null;
     isLoading: boolean;
     errorMessage: string | null;
 }
