@@ -41,8 +41,8 @@ const Card: React.FC<CardProps> = ({myAccountInfo,personalRanking, heading, bigg
                     myAccountInfo && (
                         <>
                             {
-                                myAccountInfo?.value && (
-                                    <BodyText>Value : {myAccountInfo?.value} €</BodyText>
+                                myAccountInfo?.pixels && (
+                                    <BodyText>Value : {myAccountInfo?.pixels * 2} €</BodyText>
                                 )
                             }
 
@@ -58,17 +58,17 @@ const Card: React.FC<CardProps> = ({myAccountInfo,personalRanking, heading, bigg
                                 )
                             }
 
-                            {
-                                myAccountInfo?.totalTrades && (
-                                    <BodyText>Total Trades : {myAccountInfo?.totalTrades} €</BodyText>
-                                )
-                            }
+                            {/*{*/}
+                            {/*    myAccountInfo?.totalTrades && (*/}
+                            {/*        <BodyText>Total Trades : {myAccountInfo?.totalTrades} €</BodyText>*/}
+                            {/*    )*/}
+                            {/*}*/}
 
-                            {
-                                myAccountInfo?.totalEarnings && (
-                                    <BodyText>Total Earnings : {myAccountInfo?.totalEarnings} €</BodyText>
-                                )
-                            }
+                            {/*{*/}
+                            {/*    myAccountInfo?.totalEarnings && (*/}
+                            {/*        <BodyText>Total Earnings : {myAccountInfo?.totalEarnings} €</BodyText>*/}
+                            {/*    )*/}
+                            {/*}*/}
 
 
 

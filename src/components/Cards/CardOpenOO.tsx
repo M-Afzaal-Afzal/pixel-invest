@@ -44,7 +44,7 @@ const CardOpenOO: React.FC<cardOpenOOProps> = ({type, data}) => {
                             PiXeL: {value.amount}
                         </BodyText>
                         <BodyText>
-                            Limit: {value.offerLimit} €
+                            Limit: {type==='order' ? value.orderLimit : value.offerLimit} €
                         </BodyText>
                     </Box>
                 ))
