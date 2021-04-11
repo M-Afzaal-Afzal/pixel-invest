@@ -24,16 +24,16 @@ const Dashboard: React.FC = () => {
 
 
     return (
-        <Box>
+        <Box bg={'brand.background'} py={20}>
             {/*component for chart*/}
-            <Box my={20} align={'center'}>
+            <Box  align={'center'}>
                 <Box p={6} align={'center'} maxW={'50rem'} h={'30rem'}>
                     <Chart/>
                 </Box>
             </Box>
 
             <Container maxW={'container.xl'}>
-                <Stack spacing={8} mb={16}  alignItems={['center',null,'stretch']}
+                <Stack spacing={8}  alignItems={['center',null,'stretch']}
                        justify={'space-around'}
                        direction={['column', null, 'row', 'row']}>
 

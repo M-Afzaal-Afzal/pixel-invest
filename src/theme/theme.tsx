@@ -28,20 +28,24 @@ breakpoints = createBreakpoints({
 
 const colors = {
     brand: {
-        primary: '#63b3ed',
-        secondary: '#3182ce',
-        black: '#11111B',
+        primary: '#5893d4',
+        secondary: '#1f3c88',
+        tertiary: '#070d59',
+        background: '#d6e4f0',
+        black: '#11111B'
     },
     button: {
-        100: '#BEE3F8',
-        200: '#90CDF4',
-        300: '#63B3ED',
-        400: '#4299E1',
-        500: '#3182CE',
-        600: '#2B6CB0',
-        700: '#2C5282',
-        800: '#2A4365',
-        900: '#1A365D',
+        // 50: '#9cbfe5',
+        // 100: '#8eb6e2',
+        // 200: '#81adde',
+        // 300: '#73a4db',
+        // 400: '#669cd7',
+
+        500: '#5893d4',
+        600: '#4a8ad1',
+        700: '#3d82cd',
+        // 800: '#3379c6',
+        // 900: '#3071b9',
     }
 }
 

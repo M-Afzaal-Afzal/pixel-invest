@@ -94,7 +94,7 @@ const Login: React.FC = () => {
                             </CFormErrorMessage>
                         </FormControl>
 
-                        <Button isLoading={isLoading} mt={8} colorScheme="blue" type="submit">
+                        <Button isLoading={isLoading} mt={8} colorScheme="button" type="submit">
                             Login
                         </Button>
                     </form>

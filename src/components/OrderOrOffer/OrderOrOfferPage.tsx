@@ -46,7 +46,7 @@ const OrderOrOfferPage: React.FC<orderOfferProps> = ({type,data}) => {
     // }
 
     return (
-        <Box w={'100%'}>
+        <Box w={'100%'} bg={'brand.background'}>
 
             <Box mx={['2', '4', '8']} py={['4rem', '6rem', '8rem']} align={'center'}>
 

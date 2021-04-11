@@ -7,8 +7,8 @@ import {selectOpenOffers} from "../store/openOffers/openOffersSlice";
 
 const Sell = () => {
 
-    const isLoggedIn = useAppSelector(selectCurrentUser);
     const router = useRouter();
+    const isLoggedIn = useAppSelector(selectCurrentUser);
 
     const openOffers = useAppSelector(selectOpenOffers)
 

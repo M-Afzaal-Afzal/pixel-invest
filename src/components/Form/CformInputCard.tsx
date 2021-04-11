@@ -240,7 +240,7 @@ const CFromInputCard: React.FC<CFormInputCardProps> = ({options, type}) => {
                     </BodyText>
                 </Box>
                 <Box align={'center'}>
-                    <Button mt={8} colorScheme="blue" type="submit">
+                    <Button mt={8} colorScheme="button" type="submit">
                         {buttonText}
                     </Button>
                 </Box>
