@@ -1,9 +1,11 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {Box, Container, Stack} from "@chakra-ui/react";
 import Chart from "../components/Dashboard/Chart";
 import Card from "../components/Cards/Card";
 import {useAppSelector} from "../store/hooks";
 import {selectBiggestAccounts} from "../store/biggestAccounts/biggestAccountsSlice";
+import {selectCurrentUser} from "../store/currentUser/currentUserSlice";
+import {useRouter} from "next/router";
 
 const Dashboard: React.FC = () => {
 
@@ -11,19 +13,14 @@ const Dashboard: React.FC = () => {
 
     console.log(biggestAccounts);
 
-    // const [biggestAccounts, setBiggestAccounts] = useState<biggestAccountInterface[]>([]);
+    const isLoggedIn = useAppSelector(selectCurrentUser);
+    const router = useRouter();
 
-    // useEffect(() => {
-    //     axios.get('https://my-json-server.typicode.com/M-Afzaal-Afzal/peerstu-api/biggestAccounts')
-    //         .then(res => {
-    //             setBiggestAccounts(res.data);
-    //
-    //         })
-    //         .catch(err => {
-    //             console.log(err.message);
-    //         })
-    //
-    // }, []);
+    useEffect(() => {
+        if (!isLoggedIn?.userName) {
+            router.replace('/login');
+        }
+    },[isLoggedIn])
 
 
     return (

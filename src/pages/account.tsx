@@ -1,10 +1,23 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {Box, Container, Grid} from "@chakra-ui/react";
 import CformInputCard from "../components/Form/CformInputCard";
 import Card from "../components/Cards/Card";
 import CInfoInputCard from "../components/Form/CInfoInputCard";
+import {useAppSelector} from "../store/hooks";
+import {selectCurrentUser} from "../store/currentUser/currentUserSlice";
+import {useRouter} from "next/router";
 
 const Account = () => {
+
+    const isLoggedIn = useAppSelector(selectCurrentUser);
+    const router = useRouter();
+
+    useEffect(() => {
+        if (!isLoggedIn?.userName) {
+            router.replace('/login');
+        }
+    },[isLoggedIn])
+
     return (
         <Container maxW={'container.xl'}>
             <Box mx={['2', '4', '8']} py={['2rem', '4rem', '6rem']}>

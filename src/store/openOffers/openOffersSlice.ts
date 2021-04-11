@@ -3,10 +3,10 @@ import type {RootState} from '../store'
 
 // Define a type for the slice state
 import axios from "axios";
-import offerInterface from '../../interfaces/offerInterface';
+// import offerInterface from '../../interfaces/offerInterface';
 
 interface OpenOrdersSliceTypes {
-    openOffers: offerInterface[] | null;
+    openOffers: {id: number;pixels: number;limit: number}[] | null;
     isLoading: boolean;
     errorMessage: string | null;
 }
@@ -29,7 +29,7 @@ export const getOpenOffers = createAsyncThunk(
             })
             .catch(err => {
                 console.log(err.message)
-                return err.message;
+                throw err.message;
             });
     }
 )
@@ -52,7 +52,7 @@ export const openOffersSlice = createSlice({
             state.isLoading = false;
         },
         [getOpenOffers.rejected as any]: (state, action) => {
-            state.errorMessage = action.payload;
+            state.errorMessage = action.error.message;
             state.isLoading = false;
         }
     }
@@ -61,9 +61,9 @@ export const openOffersSlice = createSlice({
 // export const {setCurrentUser} = currentUserSlice.actions
 
 // Other code such as selectors can use the imported `RootState` type
-export const selectBiggestAccounts = (state: RootState) => state.openOffers;
-export const selectIsLoadingBA = (state: RootState) => state.openOffers.isLoading;
-export const selectErrorMessageBA = (state: RootState) => state.openOffers.errorMessage;
+export const selectOpenOffers = (state: RootState) => state.openOffers.openOffers;
+export const selectIsLoadingOOF = (state: RootState) => state.openOffers.isLoading;
+export const selectErrorMessageOOF = (state: RootState) => state.openOffers.errorMessage;
 
 
 export default openOffersSlice.reducer;

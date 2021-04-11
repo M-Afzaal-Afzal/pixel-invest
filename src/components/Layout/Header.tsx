@@ -22,12 +22,26 @@ import HeaderButton from "../Buttons/HeaderButton";
 import {HamburgerIcon} from "@chakra-ui/icons";
 import DrawerButton from "../Buttons/DrawerButton";
 import Link from "next/link";
+import {useAppDispatch, useAppSelector} from "../../store/hooks";
+import {selectCurrentUser, setUserLogout} from "../../store/currentUser/currentUserSlice";
+import {useRouter} from "next/router";
 
 const Header: React.FC = () => {
 
     const {isOpen, onOpen, onClose} = useDisclosure()
 
     const [isLargerThan64em] = useMediaQuery("(min-width: 64em)")
+
+    const isLoggedIn = useAppSelector(selectCurrentUser);
+    const dispatch = useAppDispatch();
+    const router = useRouter();
+
+    const logoutHandler = () => {
+        dispatch(setUserLogout());
+        router.replace('/');
+
+    }
+
 
     // const remoteApi = {
     //     biggestAccounts: [
@@ -178,11 +192,11 @@ const Header: React.FC = () => {
         <Box position={'fixed'} top={0} width={'100%'} zIndex={20} left={0} p={'4'}
              bgGradient={'linear(to-b,brand.secondary,brand.primary)'} boxShadow={'lg'}>
             <Container maxW={'container.xl'}>
-                <Flex direction={'row'} justify={'space-between'}>
+                <Flex alignItems={'center'} direction={'row'} justify={'space-between'}>
                     <Box>
                         <Box as={Link} href={'/'}>
                             <HStack>
-                                <Box _hover={{cursor:'pointer'}} bg={'brand.secondary'} w={'40px'} h={'40px'}>
+                                <Box _hover={{cursor: 'pointer'}} bg={'brand.secondary'} w={'40px'} h={'40px'}>
                                 </Box>
                                 <Heading _hover={{cursor: 'pointer'}} fontSize={'lg'}>PiXel-Invest</Heading>
                             </HStack>
@@ -193,26 +207,49 @@ const Header: React.FC = () => {
                             <>
                                 <Box>
                                     <HStack spacing={4}>
-                                        <Box as={Link} href={'/dashboard'}>
-                                            <Box>
-                                                <HeaderButton>Dashboard</HeaderButton>
-                                            </Box>
-                                        </Box>
-                                        <Box as={Link} href={'/buy'}>
-                                            <HeaderButton>Buy</HeaderButton>
-                                        </Box>
-                                        <Box as={Link} href={'/sell'}>
-                                            <HeaderButton>Sell</HeaderButton>
-                                        </Box>
-                                        <Box as={Link} href={'/account'}>
-                                            <HeaderButton>Account</HeaderButton>
-                                        </Box>
+                                        {
+                                            isLoggedIn ? (
+                                                <>
+                                                    <Box as={Link} href={'/dashboard'}>
+                                                        <Box>
+                                                            <HeaderButton>Dashboard</HeaderButton>
+                                                        </Box>
+                                                    </Box>
+                                                    <Box as={Link} href={'/buy'}>
+                                                        <HeaderButton>Buy</HeaderButton>
+                                                    </Box>
+                                                    <Box as={Link} href={'/sell'}>
+                                                        <HeaderButton>Sell</HeaderButton>
+                                                    </Box>
+                                                    <Box as={Link} href={'/account'}>
+                                                        <HeaderButton>Account</HeaderButton>
+                                                    </Box>
+                                                </>
+
+                                            ) : (
+                                                <Box justifyContent={'center'} align={'center'} display={'flex'}
+                                                     alignItems={'center'} m={'auto'}>
+                                                    <Heading fontSize={'1.5rem'} color={'white'}>Login To Buy Or
+                                                        Sell</Heading>
+                                                </Box>
+                                            )
+                                        }
+
                                     </HStack>
                                 </Box>
                                 <Box>
-                                    <Box as={Link} href={'/login'}>
-                                        <HeaderButton>Login</HeaderButton>
-                                    </Box>
+                                    {
+                                        isLoggedIn ? (
+                                            <Box onClick={logoutHandler}>
+                                                <HeaderButton>Logout</HeaderButton>
+                                            </Box>
+                                        ) : (
+                                            <Box as={Link} href={'/login'}>
+                                                <HeaderButton>Login</HeaderButton>
+                                            </Box>
+                                        )
+                                    }
+
                                 </Box>
                             </>
                         ) : (
@@ -234,36 +271,58 @@ const Header: React.FC = () => {
                                 <DrawerCloseButton borderRadius={'50%'}/>
                             </DrawerHeader>
                             <DrawerBody>
-                                <VStack mt={4} spacing={2}>
-                                    <Box width={'100%'} onClick={onClose}>
-                                        <Box as={Link} href={'/'}>
-                                            <DrawerButton>Dashboard</DrawerButton>
+                                {
+                                    isLoggedIn ? (
+                                        <VStack mt={4} spacing={2}>
+                                            <Box width={'100%'} onClick={onClose}>
+                                                <Box as={Link} href={'/'}>
+                                                    <DrawerButton>Dashboard</DrawerButton>
+                                                </Box>
+                                            </Box>
+                                            <Box width={'100%'} onClick={onClose}>
+                                                <Box as={Link} href={'/buy'}>
+                                                    <DrawerButton>Buy</DrawerButton>
+                                                </Box>
+                                            </Box>
+                                            <Box width={'100%'} onClick={onClose}>
+                                                <Box as={Link} href={'/sell'}>
+                                                    <DrawerButton>Sell</DrawerButton>
+                                                </Box>
+                                            </Box>
+                                            <Box width={'100%'} onClick={onClose}>
+                                                <Box as={Link} href={'/account'}>
+                                                    <DrawerButton>Account</DrawerButton>
+                                                </Box>
+                                            </Box>
+                                        </VStack>
+                                    ) : (
+                                        <Box h={'100%'} justifyContent={'center'} display={'flex'} alignItems={'center'}
+                                             m={'auto'}>
+                                            <Heading fontSize={'1.5rem'} color={'brand.primary'}>Login To Buy Or
+                                                Sell</Heading>
                                         </Box>
-                                    </Box>
-                                    <Box width={'100%'} onClick={onClose}>
-                                        <Box as={Link} href={'/buy'}>
-                                            <DrawerButton>Buy</DrawerButton>
-                                        </Box>
-                                    </Box>
-                                    <Box width={'100%'} onClick={onClose}>
-                                        <Box as={Link} href={'/sell'}>
-                                            <DrawerButton>Sell</DrawerButton>
-                                        </Box>
-                                    </Box>
-                                    <Box width={'100%'} onClick={onClose}>
-                                        <Box as={Link} href={'/account'}>
-                                            <DrawerButton>Account</DrawerButton>
-                                        </Box>
-                                    </Box>
-                                </VStack>
+                                    )
+                                }
+
                             </DrawerBody>
                             <DrawerFooter color={'brand.primary'} borderTopWidth={'1px'}>
                                 <Box w={'100%'}>
-                                    <Box as={Link} href={'/login'}>
-                                        <Box onClick={onClose}>
-                                            <DrawerButton>Login</DrawerButton>
-                                        </Box>
-                                    </Box>
+                                    {
+                                        isLoggedIn ? (
+                                            <Box onClick={logoutHandler}>
+                                                <Box onClick={onClose}>
+                                                    <DrawerButton>Logout</DrawerButton>
+                                                </Box>
+                                            </Box>
+                                        ) : (
+                                            <Box as={Link} href={'/login'}>
+                                                <Box onClick={onClose}>
+                                                    <DrawerButton>Login</DrawerButton>
+                                                </Box>
+                                            </Box>
+                                        )
+                                    }
+
 
                                     <Text mt={2} align={'right'} color={'brand.primary'}>
                                         Powered by PiXeL-invest UG

@@ -22,14 +22,14 @@ const initialState: currentUserSliceTypes = {
 export const getCurrentUser = createAsyncThunk(
     'currentUser/getCurrentUser',
     async () => {
-        return axios.get('https://my-json-server.typicode.com/M-Afzaal-Afzal/peerstu-Api/myAccount')
+         return await axios.get('https://my-json-server.typicode.com/M-Afzaal-Afzal/peerstu-Api/myAccount')
             .then(res => {
                 console.log(res.data)
                 return res.data
             })
             .catch(err => {
-                console.log(err.message)
-                return err.message;
+                console.log(err.message);
+                throw (err.message);
             });
     }
 )
@@ -39,24 +39,11 @@ export const currentUserSlice = createSlice({
     // `createSlice` will infer the state type from the `initialState` argument
     initialState,
     reducers: {
-        // setCurrentUser: (state,action:PayloadAction<currentUserInterface>) => {
-        //     state.user = action.payload
-        //     // state.id = action.payload.id;
-        //     // state.userName = action.payload.userName;
-        //     // state.email = action.payload.email;
-        //     // state.pixels = action.payload.pixels;
-        //     // state.balance = action.payload.balance;
-        //     // state.tradeHistory = action.payload.tradeHistory;
-        //     // state.orders = action.payload.orders;
-        //     // state.offers = action.payload.offers;
-        // },
-        // setIsLoadingFalse: (state) => {
-        //     state.isLoading = false;
-        // },
-        // setIsLoadingTrue: (state) => {
-        //     state.isLoading = true;
-        // },
+       setUserLogout: (state) => {
+           state.user = null;
+       }
     },
+    //asynchronout reduceers goes there in estra reducers
     extraReducers: {
         [getCurrentUser.pending as any]: (state) => {
             state.errorMessage = null;
@@ -68,15 +55,19 @@ export const currentUserSlice = createSlice({
             state.isLoading = false;
         },
         [getCurrentUser.rejected as any]: (state, action) => {
-            state.errorMessage = action.payload;
+            state.errorMessage = action.error.message;
             state.isLoading = false;
         }
     }
 })
 
-// export const {setCurrentUser} = currentUserSlice.actions
+// action can be exported like that, as it it this easy because of redux toolkit
+
+export const {setUserLogout} = currentUserSlice.actions
 
 // Other code such as selectors can use the imported `RootState` type
+
+
 export const selectCurrentUser = (state: RootState) => state.currentUser.user;
 export const selectIsLoadingCU = (state: RootState) => state.currentUser.isLoading;
 export const selectErrorMessageCU = (state: RootState) => state.currentUser.errorMessage;

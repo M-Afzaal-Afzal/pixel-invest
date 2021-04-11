@@ -18,7 +18,7 @@ type Inputs = {
 
 const CFromInputCard: React.FC<CFormInputCardProps> = ({options, type}) => {
 
-    const {handleSubmit, errors, register} = useForm<Inputs>();
+    const {handleSubmit,watch, errors, register} = useForm<Inputs>();
 
     const onSubmit = (data: Inputs) => {
         switch (type) {
@@ -169,6 +169,10 @@ const CFromInputCard: React.FC<CFormInputCardProps> = ({options, type}) => {
             buttonText = 'Withdraw';
             break;
     }
+
+    const firstInputValue = watch(firstInputName)
+
+    console.log(firstInputValue);
 
     return (
         <Box p={['8', '16', '24']}

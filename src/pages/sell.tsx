@@ -1,14 +1,25 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import OrderOrOfferPage from "../components/OrderOrOffer/OrderOrOfferPage";
+import {useAppSelector} from "../store/hooks";
+import {selectCurrentUser} from "../store/currentUser/currentUserSlice";
+import {useRouter} from "next/router";
+import {selectOpenOffers} from "../store/openOffers/openOffersSlice";
 
 const Sell = () => {
+
+    const isLoggedIn = useAppSelector(selectCurrentUser);
+    const router = useRouter();
+
+    const openOffers = useAppSelector(selectOpenOffers)
+
+    useEffect(() => {
+        if (!isLoggedIn?.userName) {
+            router.replace('/login');
+        }
+    },[isLoggedIn])
+
     return (
-        <OrderOrOfferPage data={
-            [
-                {id: 1,pixel: 444, limit: 111},
-                {id: 2,pixel: 222, limit: 222}
-            ]
-        } type={'offer'}/>
+        <OrderOrOfferPage data={openOffers} type={'offer'}/>
     );
 };
 

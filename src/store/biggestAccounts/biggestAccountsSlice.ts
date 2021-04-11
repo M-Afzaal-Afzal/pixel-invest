@@ -29,7 +29,7 @@ export const getBiggestAccounts = createAsyncThunk(
             })
             .catch(err => {
                 console.log(err.message)
-                return err.message;
+                throw err.message;
             });
     }
 )
@@ -52,7 +52,7 @@ export const biggestAccountsSlice = createSlice({
             state.isLoading = false;
         },
         [getBiggestAccounts.rejected as any]: (state, action) => {
-            state.errorMessage = action.payload;
+            state.errorMessage = action.error.message;
             state.isLoading = false;
         }
     }
