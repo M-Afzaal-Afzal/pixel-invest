@@ -1,14 +1,14 @@
 import React from 'react';
-import {Box, Button, ButtonProps, forwardRef} from "@chakra-ui/react";
+import { Button, ButtonProps, forwardRef} from "@chakra-ui/react";
 import {motion} from "framer-motion";
 
 const ButtonSecondary = forwardRef<ButtonProps, 'button'>(({children, ...props}, ref) => {
 
-    const MotionBox = motion(Box);
+    const MotionButton = motion(Button);
 
     return (
         <Button
-            as={MotionBox}
+            as={MotionButton}
             whileHover={{
                 scale: '1.0777',
             }}

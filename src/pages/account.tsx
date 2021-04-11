@@ -36,35 +36,37 @@ const Account = () => {
                                     <RechargeInputCard options={['Paypal', 'Visa', 'Klarna']}/>
                                     {/*<CformInputCard options={} type={'recharge'}/>*/}
                                 </Box>
+                            </Fade>
                                 <Box mt={16}>
                                     <WithdrawInputCard options={['Paypal', 'Visa', 'Klarna']}/>
                                 </Box>
                                 <Box mt={16}>
                                     <CInfoInputCard/>
                                 </Box>
-                            </Fade>
 
                         </Box>
 
                         <Box order={[-1, null, null, 0]}>
                             <Box top={['null', 'null', 'null', 20]} position={['relative', null, null, 'sticky']}>
-                                <Fade triggerOnce direction={'up'}>
-                                    <Box>
+                                <Box>
+                                    <Fade triggerOnce delay={400} direction={'up'}>
                                         <Card
                                             heading={'My Account'}
                                             myAccountInfo={userAccountInfo}
                                         />
-                                    </Box>
-                                    {/*top={['null','null','null',490]}*/}
-                                    <Box position={['relative', null, null, 'sticky']} mt={12}>
+                                    </Fade>
+                                </Box>
+                                {/*top={['null','null','null',490]}*/}
+                                <Box position={['relative', null, null, 'sticky']} mt={12}>
+                                    <Fade triggerOnce delay={700} direction={'up'}>
                                         <Card heading={'Personal Ranking'}
                                               personalRanking={[{name: 'afzaal', id: 2, pixels: 333}, {
                                                   name: 'afzaal',
                                                   id: 22,
                                                   pixels: 333
                                               }]}/>
-                                    </Box>
-                                </Fade>
+                                    </Fade>
+                                </Box>
                             </Box>
                         </Box>
 

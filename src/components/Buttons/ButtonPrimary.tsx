@@ -4,11 +4,11 @@ import {motion} from "framer-motion";
 
 const ButtonPrimary = forwardRef<ButtonProps, 'button'>(({children, ...props}, ref) => {
 
-    const MotionBox = motion(Box);
+    const MotionButton = motion(Box);
 
     return (
         <Button
-            as={MotionBox}
+            as={MotionButton}
             whileHover={{
                 scale: '1.0777',
             }}

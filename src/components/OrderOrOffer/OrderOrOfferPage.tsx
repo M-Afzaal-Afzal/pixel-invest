@@ -41,7 +41,7 @@ const OrderOrOfferPage: React.FC<orderOfferProps> = ({type, data}) => {
                 {/*<CformInputCard options={} type={type}/>*/}
 
                 <Container mt={20} maxW={'container.xl'}>
-                    <Fade triggerOnce cascade direction={'up'}>
+
 
                         <Stack spacing={8} mb={16} justify={'space-around'}
                                alignItems={['center', null, 'stretch']}
@@ -55,14 +55,12 @@ const OrderOrOfferPage: React.FC<orderOfferProps> = ({type, data}) => {
                             />
 
                         </Stack>
-                    </Fade>
+
                 </Container>
-                <Box my={20} align={'center'}>
-                    <Fade direction={'up'}>
-                        <Box p={6} align={'center'} maxW={'50rem'} h={'30rem'}>
-                            <Chart/>
-                        </Box>
-                    </Fade>
+                <Box py={20} align={'center'}>
+                    <Box p={6} align={'center'} maxW={'50rem'} h={'30rem'}>
+                        <Chart/>
+                    </Box>
                 </Box>
             </Box>
         </Box>
