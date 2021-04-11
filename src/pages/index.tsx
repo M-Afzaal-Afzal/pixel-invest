@@ -7,7 +7,7 @@ import Info from "../components/Hero/info";
 
 
 const Index: React.FC = () => (
-    <Box bg={'brand.black'} p={['2', '6', '12', '20']}>
+    <Box bg={'brand.tertiary'} p={['2', '6', '12', '20']}>
         {/* Box Containing logo with title*/}
         <Box align={'center'} mb={8}>
             <Pentagon/>

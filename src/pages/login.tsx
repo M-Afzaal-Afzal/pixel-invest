@@ -53,7 +53,7 @@ const Login: React.FC = () => {
     }
 
     return (
-        <Box w={'100%'} bg={'brand.black'}>
+        <Box w={'100%'} bg={'brand.tertiary'}>
 
             <Box mx={['2', '4', '8']} py={['4rem', '6rem', '8rem']} align={'center'}>
 

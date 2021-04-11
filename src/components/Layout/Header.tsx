@@ -190,7 +190,10 @@ const Header: React.FC = () => {
 
     return (
         <Box position={'fixed'} top={0} width={'100%'} zIndex={20} left={0} p={'4'}
-             bgGradient={'linear(to-b,brand.secondary,brand.primary)'} boxShadow={'lg'}>
+             // bgGradient={'linear(to-b,brand.secondary,brand.primary)'}
+            bg={'brand.secondary'}
+             boxShadow={'lg'}
+        >
             <Container maxW={'container.xl'}>
                 <Flex alignItems={'center'} direction={'row'} justify={'space-between'}>
                     <Box>
