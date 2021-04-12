@@ -39,7 +39,6 @@ const Header: React.FC = () => {
     const logoutHandler = () => {
         dispatch(setUserLogout());
         router.replace('/');
-
     }
 
 
@@ -279,7 +278,7 @@ const Header: React.FC = () => {
                                     isLoggedIn ? (
                                         <VStack mt={4} spacing={2}>
                                             <Box width={'100%'} onClick={onClose}>
-                                                <Box as={Link} href={'/'}>
+                                                <Box as={Link} href={'/dashboard'}>
                                                     <DrawerButton>Dashboard</DrawerButton>
                                                 </Box>
                                             </Box>
