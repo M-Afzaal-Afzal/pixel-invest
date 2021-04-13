@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {Box, FormControl, FormLabel, Heading, useDisclosure} from "@chakra-ui/react";
+import {Box, FormControl, FormLabel, Heading, useDisclosure, useToast} from "@chakra-ui/react";
 import CInput from "./CInput";
 import CFormErrorMessage from "./CFormErrorMessage";
 import CSelect from "../Select/CSelect";
@@ -21,6 +21,8 @@ interface orderInputCardProps {
 const WithdrawInputCard: React.FC<orderInputCardProps> = ({options}) => {
 
     const {isOpen, onOpen, onClose} = useDisclosure();
+
+    const toast = useToast();
 
     const [isConfirmed, setIsConfirmed] = useState<boolean>(false);
 
@@ -71,10 +73,17 @@ const WithdrawInputCard: React.FC<orderInputCardProps> = ({options}) => {
         }
 
         console.log(data);
+
         reset({
             amount: '',
             to: '',
             confirmPw: '',
+        })
+
+        toast({
+            title: `Withdraw Successfully`,
+            status: 'success',
+            isClosable: true,
         })
 
     }

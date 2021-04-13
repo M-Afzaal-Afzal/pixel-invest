@@ -5,6 +5,8 @@ import CInput from "./CInput";
 import CFormErrorMessage from "./CFormErrorMessage";
 import ButtonSecondary from "../Buttons/ButtonSecondary";
 import ConfirmationModal from "../Modal/ConfirmationModal";
+import { useToast } from "@chakra-ui/react"
+
 
 type Inputs = {
     name: string;
@@ -16,6 +18,10 @@ type Inputs = {
 const CFormInputCard = () => {
 
     const {isOpen, onOpen, onClose} = useDisclosure();
+
+    // toast is used for showing the dialog
+
+    const toast = useToast();
 
     const [isConfirmed,setIsConfirmed] = useState<boolean>(false);
 
@@ -85,6 +91,14 @@ const CFormInputCard = () => {
 
         console.log(data)
 
+        toast({
+            title: `Changes are applied successfully`,
+            status: 'success',
+            isClosable: true,
+        })
+
+        // we can also use the above toast for error by changing the status of error
+
         // resetting the form after successful confirmation
         reset({
             email: '',
@@ -92,6 +106,10 @@ const CFormInputCard = () => {
             paypal: '',
             password: '',
         })
+
+        // if successful this dialog will be used
+
+        // if error this dialog will be used
     }
 
 

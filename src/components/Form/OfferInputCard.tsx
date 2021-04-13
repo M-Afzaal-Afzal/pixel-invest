@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {Box, FormControl, FormLabel, Heading, useDisclosure} from "@chakra-ui/react";
+import {Box, FormControl, FormLabel, Heading, useDisclosure, useToast} from "@chakra-ui/react";
 import CInput from "./CInput";
 import CFormErrorMessage from "./CFormErrorMessage";
 import CSelect from "../Select/CSelect";
@@ -23,6 +23,8 @@ interface orderInputCardProps {
 const OfferInputCard: React.FC<orderInputCardProps> = ({options}) => {
 
     const {handleSubmit,watch, errors, register,reset} = useForm<Inputs>();
+
+    const toast = useToast();
 
     const pixelValue = useAppSelector(selectPixelValue);
 
@@ -68,10 +70,17 @@ const OfferInputCard: React.FC<orderInputCardProps> = ({options}) => {
         }
 
         console.log(data);
+
         reset({
             amount: '',
             for: '',
             validUntil: ''
+        })
+
+        toast({
+            title: `Offer Created Successfully`,
+            status: 'success',
+            isClosable: true,
         })
 
     }

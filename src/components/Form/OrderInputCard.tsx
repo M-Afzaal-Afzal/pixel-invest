@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import {
     Box, FormControl,
-     FormLabel, Heading, useDisclosure,
+    FormLabel, Heading, useDisclosure, useToast,
 } from "@chakra-ui/react";
 import CInput from "./CInput";
 import CFormErrorMessage from "./CFormErrorMessage";
@@ -26,6 +26,8 @@ interface orderInputCardProps {
 const OrderInputCard: React.FC<orderInputCardProps> = ({options}) => {
 
     const {isOpen, onOpen, onClose} = useDisclosure();
+
+    const toast = useToast();
 
     const [isConfirmed,setIsConfirmed] = useState<boolean>(false);
 
@@ -87,6 +89,11 @@ const OrderInputCard: React.FC<orderInputCardProps> = ({options}) => {
             validUntil: ''
         })
 
+        toast({
+            title: `Order Created Successfully`,
+            status: 'success',
+            isClosable: true,
+        })
 
     }
 
