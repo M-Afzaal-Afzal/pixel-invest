@@ -88,12 +88,11 @@ const Index: React.FC = () => {
                                                 <ModalOverlay onClick={closeHandler}/>
                                                 <ModalContent layoutId={selectedId}  as={MotionBox} w={['28rem','39rem']} h={['','17rem','28rem']}>
                                                     <ModalBody
-
+                                                        bg={'brand.background'}
                                                         display={'flex'}
                                                         justifyContent={'center'}
                                                         p={0} alignItems={'center'}
                                                         align={'center'}
-
                                                     >
                                                         <ModalCloseButton
                                                             bg={'brand.secondary'}

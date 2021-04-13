@@ -33,7 +33,7 @@ const Footer: React.FC = () => {
                          justifyContent={'center'}
                     >
                         <Box width={['14rem','20rem']} h={['3.5rem','5rem']} position={'relative'}>
-                            <Image src={'/home/footer-logo.png'} objectFit={'cover'} layout={'fill'}/>
+                            <Image priority src={'/home/footer-logo.png'} objectFit={'cover'} layout={'fill'}/>
                         </Box>
                     </Box>
                 </Box>
