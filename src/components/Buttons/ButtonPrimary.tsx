@@ -12,6 +12,7 @@ const ButtonPrimary = forwardRef<ButtonProps, 'button'>(({children, ...props}, r
                 cursor: 'pointer',
                 scale: '1.0777',
             }}
+            initial={{scale: 1}}
             whileTap={{
                 scale: '1'
             }}

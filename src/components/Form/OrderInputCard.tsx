@@ -1,5 +1,8 @@
-import React from 'react';
-import {Box, FormControl, FormLabel, Heading} from "@chakra-ui/react";
+import React, {useState} from 'react';
+import {
+    Box, FormControl,
+     FormLabel, Heading, useDisclosure,
+} from "@chakra-ui/react";
 import CInput from "./CInput";
 import CFormErrorMessage from "./CFormErrorMessage";
 import CSelect from "../Select/CSelect";
@@ -8,11 +11,12 @@ import {useForm} from "react-hook-form";
 import {useAppSelector} from "../../store/hooks";
 import {selectPixelValue} from "../../store/pixelValue/pixelValue";
 import ButtonSecondary from "../Buttons/ButtonSecondary";
+import ConfirmationModal from "../Modal/ConfirmationModal";
 
 type Inputs = {
     amount: string;
     for: number;
-    validUntil:  Date ;
+    validUntil: Date;
 }
 
 interface orderInputCardProps {
@@ -21,11 +25,29 @@ interface orderInputCardProps {
 
 const OrderInputCard: React.FC<orderInputCardProps> = ({options}) => {
 
-    const {handleSubmit,watch, errors, register} = useForm<Inputs>();
+    const {isOpen, onOpen, onClose} = useDisclosure();
 
-    const pixelValue = useAppSelector(selectPixelValue)
+    const [isConfirmed,setIsConfirmed] = useState<boolean>(false);
+
+    const makeFormConfirmed = () => {
+        setIsConfirmed(true);
+    }
+
+    const makeFromRejected = () => {
+        setIsConfirmed(false);
+    }
+
+    // using the react hook form
+
+    const {handleSubmit, watch, errors, register} = useForm<Inputs>();
+
+    // selecting the pixel value from the store
+
+    const pixelValue = useAppSelector(selectPixelValue);
 
     const amountValue = watch('amount');
+
+    // registers to handle the form validation
 
     const amountReg = register({
         required: {
@@ -45,10 +67,29 @@ const OrderInputCard: React.FC<orderInputCardProps> = ({options}) => {
         required: 'Please select Date',
     })
 
+    // when we submit the form
+
     const onSubmit = (data: Inputs) => {
+        // if not confirmed then this will be returned
+        if (!isConfirmed) {
+            makeFormConfirmed();
+            onOpen();
+            return;
+        }
+
+        // if confirmed our actual logic goes here
+
         console.log(data);
 
+        // if the
+
+
     }
+
+    // getting the body text
+
+    let bodyText = `${pixelValue && amountValue ? (+amountValue / +pixelValue) : '___'} PiXeLs for ${amountValue ? amountValue : '___'} €`;
+
 
     return (
         <Box p={['8', '16', '24']}
@@ -56,8 +97,8 @@ const OrderInputCard: React.FC<orderInputCardProps> = ({options}) => {
              maxW={'40rem'}
              rounded={'lg'}
              boxShadow={'rgb(19 15 235 / 20%) 2px 4px 40px'}
-             // bgGradient={'linear(to-b,brand.primary,brand.secondary)'}
-            bg={'brand.primary'}
+            // bgGradient={'linear(to-b,brand.primary,brand.secondary)'}
+             bg={'brand.primary'}
         >
             <Heading mb={['4', '8', '12']}>
                 {'Create Order'}
@@ -116,16 +157,61 @@ const OrderInputCard: React.FC<orderInputCardProps> = ({options}) => {
                 <Box mt={8}>
                     <BodyText>
                         {
-                                `${pixelValue && amountValue ? (+amountValue / +pixelValue): '___'} PiXeLs for ${amountValue ? amountValue : '___'} €`
+                        bodyText
                         }
 
                     </BodyText>
                 </Box>
                 <Box align={'center'}>
-                    <ButtonSecondary mt={8} type="submit">
+                    <ButtonSecondary mt={8} type={'submit'}>
                         Create Orders
                     </ButtonSecondary>
                 </Box>
+
+                {/*    dialog to confirm*/}
+
+                {/*<Modal isCentered isOpen={isOpen} onClose={onClose}>*/}
+                {/*    <ModalOverlay/>*/}
+                {/*    <ModalContent>*/}
+                {/*        <ModalHeader>*/}
+                {/*            <Heading align={'center'} fontSize={'2xl'} color={'brand.primary'}>*/}
+                {/*                Are You Sure To Create Order?*/}
+                {/*            </Heading>*/}
+                {/*        </ModalHeader>*/}
+                {/*        <Divider/>*/}
+                {/*        <ModalCloseButton/>*/}
+                {/*        <ModalBody>*/}
+                {/*            <BodyText color={'brand.primary'}>*/}
+                {/*                {*/}
+                {/*                    `${pixelValue && amountValue ? (+amountValue / +pixelValue) : '___'} PiXeLs for ${amountValue ? amountValue : '___'} €`*/}
+                {/*                }*/}
+                {/*            </BodyText>*/}
+                {/*        </ModalBody>*/}
+                {/*        <Divider/>*/}
+                {/*        <ModalFooter>*/}
+                {/*            <Box width={'100%'} align={'center'}>*/}
+                {/*                <HStack justify={'center'}>*/}
+                {/*                    <ButtonSecondary onClick={handleSubmit(onSubmit)} type={"submit"} mr={3}>*/}
+                {/*                        Sure*/}
+                {/*                    </ButtonSecondary>*/}
+                {/*                    <ButtonPrimary onClick={() => {onClose(),setIsConfirmed(false)}} mr={3}>*/}
+                {/*                        Cancel*/}
+                {/*                    </ButtonPrimary>*/}
+                {/*                </HStack>*/}
+                {/*            </Box>*/}
+                {/*        </ModalFooter>*/}
+                {/*    </ModalContent>*/}
+                {/*</Modal>*/}
+                <ConfirmationModal heading={'Are You Sure To Create Order?'}
+                                   onSubmit={onSubmit}
+                                   makeFromRejected={makeFromRejected}
+                                   handleSubmit={handleSubmit}
+                                   onClose={onClose}
+                                   isOpen={isOpen}
+                >
+                    {bodyText}
+                </ConfirmationModal>
+
             </form>
         </Box>
     );

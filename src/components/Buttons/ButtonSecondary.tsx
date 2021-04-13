@@ -11,6 +11,7 @@ const ButtonSecondary = forwardRef<ButtonProps, 'button'>(({children, ...props},
             whileHover={{
                 scale: '1.0777',
             }}
+            initial={{scale: 1}}
 
             whileTap={{
                 scale: '1'

@@ -14,6 +14,7 @@ const DrawerButton = forwardRef<ButtonProps,'button'>(({children,...props},ref) 
             whileTap={{
                 scale: '1'
             }}
+            initial={{scale: 1}}
             fontWeight={'normal'}
             colorScheme={'button'}
             isFullWidth
