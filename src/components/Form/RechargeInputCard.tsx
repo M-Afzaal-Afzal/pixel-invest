@@ -1,11 +1,12 @@
-import React from 'react';
-import {Box, FormControl, FormLabel, Heading} from "@chakra-ui/react";
+import React, {useState} from 'react';
+import {Box, FormControl, FormLabel, Heading, useDisclosure} from "@chakra-ui/react";
 import CInput from "./CInput";
 import CFormErrorMessage from "./CFormErrorMessage";
 import CSelect from "../Select/CSelect";
 import BodyText from "../Typography/BodyText";
 import {useForm} from "react-hook-form";
 import ButtonSecondary from "../Buttons/ButtonSecondary";
+import ConfirmationModal from "../Modal/ConfirmationModal";
 
 type Inputs = {
     amount: string;
@@ -18,6 +19,18 @@ interface orderInputCardProps {
 }
 
 const WithdrawInputCard: React.FC<orderInputCardProps> = ({ options}) => {
+
+    const {isOpen, onOpen, onClose} = useDisclosure();
+
+    const [isConfirmed,setIsConfirmed] = useState<boolean>(false);
+
+    const makeFormConfirmed = () => {
+        setIsConfirmed(true);
+    }
+
+    const makeFromRejected = () => {
+        setIsConfirmed(false);
+    }
 
     const {handleSubmit, watch, errors, register} = useForm<Inputs>();
 
@@ -52,9 +65,19 @@ const WithdrawInputCard: React.FC<orderInputCardProps> = ({ options}) => {
     })
 
     const onSubmit = (data: Inputs) => {
+
+        if (!isConfirmed) {
+            makeFormConfirmed();
+            onOpen();
+            return;
+        }
+
         console.log(data);
 
     }
+
+    let bodyText = `Recharge ${amountValue ? amountValue : '___'} € from ${selectValue ? selectValue : '___'}`
+
 
     return (
         <Box p={['8', '16', '24']}
@@ -121,7 +144,7 @@ const WithdrawInputCard: React.FC<orderInputCardProps> = ({ options}) => {
                 <Box mt={8}>
                     <BodyText>
                         {
-                            `Recharge ${amountValue ? amountValue : '___'} € from ${selectValue ? selectValue : '___'}`
+                        bodyText
                         }
 
                     </BodyText>
@@ -131,6 +154,15 @@ const WithdrawInputCard: React.FC<orderInputCardProps> = ({ options}) => {
                         Recharge
                     </ButtonSecondary>
                 </Box>
+                <ConfirmationModal heading={'Are You Sure To Recharge?'}
+                                   onSubmit={onSubmit}
+                                   makeFromRejected={makeFromRejected}
+                                   handleSubmit={handleSubmit}
+                                   onClose={onClose}
+                                   isOpen={isOpen}
+                >
+                    {bodyText}
+                </ConfirmationModal>
             </form>
         </Box>
     );

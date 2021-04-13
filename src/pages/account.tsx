@@ -34,6 +34,8 @@ const Account = () => {
                             <Fade cascade triggerOnce direction={'up'}>
                                 <Box>
                                     <RechargeInputCard options={['Paypal', 'Visa', 'Klarna']}/>
+                                    {/* first i was using the same component for recharge, withdraw and create order and offer.*/}
+                                    {/* But it was adding too much complexity and making code to manage a bit harder. So i seperate them into seperate components*/}
                                     {/*<CformInputCard options={} type={'recharge'}/>*/}
                                 </Box>
                             </Fade>

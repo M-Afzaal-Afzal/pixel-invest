@@ -1,5 +1,5 @@
-import React from 'react';
-import {Box, FormControl, FormLabel, Heading} from "@chakra-ui/react";
+import React, {useState} from 'react';
+import {Box, FormControl, FormLabel, Heading, useDisclosure} from "@chakra-ui/react";
 import CInput from "./CInput";
 import CFormErrorMessage from "./CFormErrorMessage";
 import CSelect from "../Select/CSelect";
@@ -8,6 +8,7 @@ import {useForm} from "react-hook-form";
 import {useAppSelector} from "../../store/hooks";
 import {selectPixelValue} from "../../store/pixelValue/pixelValue";
 import ButtonSecondary from "../Buttons/ButtonSecondary";
+import ConfirmationModal from "../Modal/ConfirmationModal";
 
 type Inputs = {
     amount: string;
@@ -45,10 +46,33 @@ const OfferInputCard: React.FC<orderInputCardProps> = ({options}) => {
         required: 'Please select Date',
     })
 
+    const {isOpen, onOpen, onClose} = useDisclosure();
+
+    const [isConfirmed,setIsConfirmed] = useState<boolean>(false);
+
+    const makeFormConfirmed = () => {
+        setIsConfirmed(true);
+    }
+
+    const makeFromRejected = () => {
+        setIsConfirmed(false);
+    }
+
+
     const onSubmit = (data: Inputs) => {
+
+        if (!isConfirmed) {
+            makeFormConfirmed();
+            onOpen();
+            return;
+        }
+
         console.log(data);
 
     }
+
+    let bodyText = `${pixelValue && amountValue ? (+amountValue / +pixelValue) : '___'} PiXeLs for ${amountValue ? amountValue : '___'} €`
+
 
     return (
         <Box p={['8', '16', '24']}
@@ -115,7 +139,7 @@ const OfferInputCard: React.FC<orderInputCardProps> = ({options}) => {
                 <Box mt={8}>
                     <BodyText>
                         {
-                            `${pixelValue && amountValue ? (+amountValue / +pixelValue) : '___'} PiXeLs for ${amountValue ? amountValue : '___'} €`
+                        bodyText
                         }
 
                     </BodyText>
@@ -125,6 +149,15 @@ const OfferInputCard: React.FC<orderInputCardProps> = ({options}) => {
                         Create Offers
                     </ButtonSecondary>
                 </Box>
+                <ConfirmationModal heading={'Are You Sure To Create Offer?'}
+                                   onSubmit={onSubmit}
+                                   makeFromRejected={makeFromRejected}
+                                   handleSubmit={handleSubmit}
+                                   onClose={onClose}
+                                   isOpen={isOpen}
+                >
+                    {bodyText}
+                </ConfirmationModal>
             </form>
         </Box>
     );

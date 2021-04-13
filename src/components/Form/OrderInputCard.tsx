@@ -169,39 +169,6 @@ const OrderInputCard: React.FC<orderInputCardProps> = ({options}) => {
                 </Box>
 
                 {/*    dialog to confirm*/}
-
-                {/*<Modal isCentered isOpen={isOpen} onClose={onClose}>*/}
-                {/*    <ModalOverlay/>*/}
-                {/*    <ModalContent>*/}
-                {/*        <ModalHeader>*/}
-                {/*            <Heading align={'center'} fontSize={'2xl'} color={'brand.primary'}>*/}
-                {/*                Are You Sure To Create Order?*/}
-                {/*            </Heading>*/}
-                {/*        </ModalHeader>*/}
-                {/*        <Divider/>*/}
-                {/*        <ModalCloseButton/>*/}
-                {/*        <ModalBody>*/}
-                {/*            <BodyText color={'brand.primary'}>*/}
-                {/*                {*/}
-                {/*                    `${pixelValue && amountValue ? (+amountValue / +pixelValue) : '___'} PiXeLs for ${amountValue ? amountValue : '___'} €`*/}
-                {/*                }*/}
-                {/*            </BodyText>*/}
-                {/*        </ModalBody>*/}
-                {/*        <Divider/>*/}
-                {/*        <ModalFooter>*/}
-                {/*            <Box width={'100%'} align={'center'}>*/}
-                {/*                <HStack justify={'center'}>*/}
-                {/*                    <ButtonSecondary onClick={handleSubmit(onSubmit)} type={"submit"} mr={3}>*/}
-                {/*                        Sure*/}
-                {/*                    </ButtonSecondary>*/}
-                {/*                    <ButtonPrimary onClick={() => {onClose(),setIsConfirmed(false)}} mr={3}>*/}
-                {/*                        Cancel*/}
-                {/*                    </ButtonPrimary>*/}
-                {/*                </HStack>*/}
-                {/*            </Box>*/}
-                {/*        </ModalFooter>*/}
-                {/*    </ModalContent>*/}
-                {/*</Modal>*/}
                 <ConfirmationModal heading={'Are You Sure To Create Order?'}
                                    onSubmit={onSubmit}
                                    makeFromRejected={makeFromRejected}

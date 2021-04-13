@@ -1,9 +1,10 @@
-import React from 'react';
-import {Box, FormControl, FormLabel, Heading} from "@chakra-ui/react";
+import React, {useState} from 'react';
+import {Box, FormControl, FormLabel, Heading, useDisclosure} from "@chakra-ui/react";
 import {useForm} from "react-hook-form";
 import CInput from "./CInput";
 import CFormErrorMessage from "./CFormErrorMessage";
 import ButtonSecondary from "../Buttons/ButtonSecondary";
+import ConfirmationModal from "../Modal/ConfirmationModal";
 
 type Inputs = {
     name: string;
@@ -13,6 +14,18 @@ type Inputs = {
 }
 
 const CFormInputCard = () => {
+
+    const {isOpen, onOpen, onClose} = useDisclosure();
+
+    const [isConfirmed,setIsConfirmed] = useState<boolean>(false);
+
+    const makeFormConfirmed = () => {
+        setIsConfirmed(true);
+    }
+
+    const makeFromRejected = () => {
+        setIsConfirmed(false);
+    }
 
     const {handleSubmit, errors, register} = useForm<Inputs>();
 
@@ -61,6 +74,13 @@ const CFormInputCard = () => {
     })
 
     const onSubmit = (data: Inputs) => {
+
+        if (!isConfirmed) {
+            makeFormConfirmed();
+            onOpen();
+            return;
+        }
+
         console.log(data)
     }
 
@@ -146,6 +166,15 @@ const CFormInputCard = () => {
                         Apply Changes
                     </ButtonSecondary>
                 </Box>
+                <ConfirmationModal heading={'Are You Sure To Recharge?'}
+                                   onSubmit={onSubmit}
+                                   makeFromRejected={makeFromRejected}
+                                   handleSubmit={handleSubmit}
+                                   onClose={onClose}
+                                   isOpen={isOpen}
+                >
+                    {'Are you sure to apply changes?'}
+                </ConfirmationModal>
             </form>
         </Box>
     );
