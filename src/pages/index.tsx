@@ -86,18 +86,25 @@ const Index: React.FC = () => {
                                         <MotionBox>
                                             <Modal blockScrollOnMount size={'2xl'} isCentered isOpen={isOpen} onClose={onClose}>
                                                 <ModalOverlay onClick={closeHandler}/>
-                                                <ModalContent w={['28rem','39rem']} h={['','17rem','28rem']}>
+                                                <ModalContent layoutId={selectedId}  as={MotionBox} w={['28rem','39rem']} h={['','17rem','28rem']}>
                                                     <ModalBody
+
                                                         display={'flex'}
                                                         justifyContent={'center'}
                                                         p={0} alignItems={'center'}
                                                         align={'center'}
+
                                                     >
-                                                        <ModalCloseButton zIndex={99999} onClick={() => {
+                                                        <ModalCloseButton
+                                                            bg={'brand.secondary'}
+                                                            borderRadius={50}
+                                                            _hover={{background: 'brand.tertiary'}}
+                                                            _active={{background: 'brand.tertiary'}}
+                                                            zIndex={99999} onClick={() => {
                                                             setSelectedId.bind(null);
                                                             onClose();
-                                                        }} color={'brand.primary'}/>
-                                                        <MotionBox layoutId={selectedId} animate={{scale: 1}} w={['25rem','36rem']}
+                                                        }} color={'white'}/>
+                                                        <MotionBox animate={{scale: 1}} w={['25rem','36rem']}
                                                                    justifySelf={'center'} h={['14rem','25rem']}
                                                                    overflow={'hidden'}
                                                                    position={'relative'}>
