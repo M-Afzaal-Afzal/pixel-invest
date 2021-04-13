@@ -16,8 +16,8 @@ const Index: React.FC = () => {
     const {isOpen, onOpen, onClose} = useDisclosure()
 
     const closeHandler = () => {
-        onClose();
         setSelectedId(null);
+        onClose();
     }
 
 
@@ -64,7 +64,7 @@ const Index: React.FC = () => {
                         <AnimateSharedLayout>
                             {
                                 infoData.map(data => (
-                                    <MotionBox key={data.id} >
+                                    <MotionBox mt={16} key={data.id} >
                                         <Info
                                             body={data.body}
                                             photoURL={data.photoURL}
@@ -84,16 +84,21 @@ const Index: React.FC = () => {
                                 {
                                     selectedId && imageSrc && (
                                         <MotionBox>
-                                            <Modal size={'2xl'} isCentered isOpen={isOpen} onClose={onClose}>
+                                            <Modal blockScrollOnMount size={'2xl'} isCentered isOpen={isOpen} onClose={onClose}>
                                                 <ModalOverlay onClick={closeHandler}/>
-                                                <ModalContent>
-                                                    <ModalBody align={'center'}>
-                                                        <ModalCloseButton onClick={() => {
+                                                <ModalContent w={['28rem','39rem']} h={['','17rem','28rem']}>
+                                                    <ModalBody
+                                                        display={'flex'}
+                                                        justifyContent={'center'}
+                                                        p={0} alignItems={'center'}
+                                                        align={'center'}
+                                                    >
+                                                        <ModalCloseButton zIndex={99999} onClick={() => {
                                                             setSelectedId.bind(null);
                                                             onClose();
                                                         }} color={'brand.primary'}/>
-                                                        <MotionBox layoutId={selectedId} animation={{scale: 1}} w={'36rem'}
-                                                                   justifySelf={'center'} h={'25rem'}
+                                                        <MotionBox layoutId={selectedId} animate={{scale: 1}} w={['25rem','36rem']}
+                                                                   justifySelf={'center'} h={['14rem','25rem']}
                                                                    overflow={'hidden'}
                                                                    position={'relative'}>
                                                             <Image src={imageSrc} layout={'fill'} objectFit={'cover'}/>
@@ -103,35 +108,11 @@ const Index: React.FC = () => {
 
                                             </Modal>
                                         </MotionBox>
-
-                                        //
-                                        //     <Box w={'16rem'} justifySelf={'center'} h={'11rem'} overflow={'hidden'}
-                                        //          position={'relative'}>
-                                        //         <Image src={imageSrc} layout={'fill'} objectFit={'cover'}/>
-                                        //         <CloseButton/>
-                                        //     </Box>
-                                        // </MotionBox>
                                     )
                                 }
                             </AnimatePresence>
                         </AnimateSharedLayout>
 
-                        {/*<Box>*/}
-                        {/*    <Info*/}
-                        {/*        body={'                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate dolorem fuga illo in iste magni, maxime nesciunt nihil nisi obcaecati omnis optio perspiciatis, quas repellat saepe, sint velit voluptas voluptates.\n'}*/}
-                        {/*        photoURL={'/home/chart.png'}*/}
-                        {/*        title={''}*/}
-                        {/*        rightImage={false}*/}
-                        {/*    />*/}
-                        {/*</Box>*/}
-                        {/*<Box>*/}
-                        {/*    <Info*/}
-                        {/*        body={'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate dolorem fuga illo in iste magni, maxime nesciunt nihil nisi obcaecati omnis optio perspiciatis, quas repellat saepe, sint velit voluptas voluptates.\n'}*/}
-                        {/*        photoURL={'/home/chart.png'}*/}
-                        {/*        title={''}*/}
-                        {/*        rightImage={true}*/}
-                        {/*    />*/}
-                        {/*</Box>*/}
                     </Fade>
                 </VStack>
 
