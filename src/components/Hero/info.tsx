@@ -5,8 +5,12 @@ import Image from "next/image";
 
 import infoProps from '../../interfaces/infoProps';
 import BodyHeading from "../Typography/BodyHeading";
+import {motion} from "framer-motion";
 
-const Info: React.FC<infoProps> = ({title,body,photoURL,rightImage}) => {
+const Info: React.FC<infoProps> = ({title,onClick,body,layoutId,photoURL,rightImage}) => {
+
+    const MotionBox = motion(Box);
+
     return (
         <>
             <Box align={'center'}>
@@ -17,9 +21,9 @@ const Info: React.FC<infoProps> = ({title,body,photoURL,rightImage}) => {
                 {
                     rightImage ? (
                         <>
-                            <Box w={'16rem'} justifySelf={'center'} h={'11rem'} overflow={'hidden'} position={'relative'}>
+                            <MotionBox layoutId={layoutId} onClick={onClick} w={'16rem'} justifySelf={'center'} h={'11rem'} overflow={'hidden'} position={'relative'}>
                                 <Image src={photoURL} layout={'fill'} objectFit={'cover'}/>
-                            </Box>
+                            </MotionBox>
                             <BodyText>
                                 {body}
                             </BodyText>
@@ -29,9 +33,9 @@ const Info: React.FC<infoProps> = ({title,body,photoURL,rightImage}) => {
                             <BodyText>
                                 {body}
                             </BodyText>
-                            <Box order={[-1,null,1]} justifySelf={'center'} w={'16rem'} h={'11rem'} overflow={'hidden'} position={'relative'}>
+                            <MotionBox layoutId={layoutId} onClick={onClick} order={[-1,null,1]} justifySelf={'center'} w={'16rem'} h={'11rem'} overflow={'hidden'} position={'relative'}>
                                 <Image src={photoURL} layout={'fill'} objectFit={'cover'}/>
-                            </Box>
+                            </MotionBox>
                         </>
                     )
                 }
