@@ -15,8 +15,8 @@ import ConfirmationModal from "../Modal/ConfirmationModal";
 
 type Inputs = {
     amount: string;
-    for: number;
-    validUntil: Date;
+    for: string;
+    validUntil: string;
 }
 
 interface orderInputCardProps {
@@ -39,7 +39,7 @@ const OrderInputCard: React.FC<orderInputCardProps> = ({options}) => {
 
     // using the react hook form
 
-    const {handleSubmit, watch, errors, register} = useForm<Inputs>();
+    const {handleSubmit, watch, errors, register,reset} = useForm<Inputs>();
 
     // selecting the pixel value from the store
 
@@ -81,7 +81,11 @@ const OrderInputCard: React.FC<orderInputCardProps> = ({options}) => {
 
         console.log(data);
 
-        // if the
+        reset({
+            amount: '',
+            for: '',
+            validUntil: ''
+        })
 
 
     }

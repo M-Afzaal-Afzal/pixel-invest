@@ -27,7 +27,7 @@ const CFormInputCard = () => {
         setIsConfirmed(false);
     }
 
-    const {handleSubmit, errors, register} = useForm<Inputs>();
+    const {handleSubmit, errors, register,reset} = useForm<Inputs>();
 
     const passwordReg = register({
         required: {
@@ -81,7 +81,17 @@ const CFormInputCard = () => {
             return;
         }
 
+        // actual logic goes here
+
         console.log(data)
+
+        // resetting the form after successful confirmation
+        reset({
+            email: '',
+            name: '',
+            paypal: '',
+            password: '',
+        })
     }
 
 

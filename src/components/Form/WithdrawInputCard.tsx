@@ -10,7 +10,7 @@ import ConfirmationModal from "../Modal/ConfirmationModal";
 
 type Inputs = {
     amount: string;
-    to: number;
+    to: string;
     confirmPw: string;
 }
 
@@ -32,7 +32,7 @@ const WithdrawInputCard: React.FC<orderInputCardProps> = ({options}) => {
         setIsConfirmed(false);
     }
 
-    const {handleSubmit, watch, errors, register} = useForm<Inputs>();
+    const {handleSubmit, watch, errors, register,reset} = useForm<Inputs>();
 
     const amountValue: string = watch('amount');
     const selectValue = watch('to');
@@ -70,8 +70,12 @@ const WithdrawInputCard: React.FC<orderInputCardProps> = ({options}) => {
             return;
         }
 
-
         console.log(data);
+        reset({
+            amount: '',
+            to: '',
+            confirmPw: '',
+        })
 
     }
 

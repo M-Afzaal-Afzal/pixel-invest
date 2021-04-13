@@ -10,7 +10,7 @@ import ConfirmationModal from "../Modal/ConfirmationModal";
 
 type Inputs = {
     amount: string;
-    to: number;
+    to: string;
     confirmPw: string;
 }
 
@@ -18,11 +18,11 @@ interface orderInputCardProps {
     options: string[];
 }
 
-const WithdrawInputCard: React.FC<orderInputCardProps> = ({ options}) => {
+const WithdrawInputCard: React.FC<orderInputCardProps> = ({options}) => {
 
     const {isOpen, onOpen, onClose} = useDisclosure();
 
-    const [isConfirmed,setIsConfirmed] = useState<boolean>(false);
+    const [isConfirmed, setIsConfirmed] = useState<boolean>(false);
 
     const makeFormConfirmed = () => {
         setIsConfirmed(true);
@@ -32,7 +32,7 @@ const WithdrawInputCard: React.FC<orderInputCardProps> = ({ options}) => {
         setIsConfirmed(false);
     }
 
-    const {handleSubmit, watch, errors, register} = useForm<Inputs>();
+    const {handleSubmit, watch, errors, register, reset} = useForm<Inputs>();
 
     const amountValue = watch('amount');
 
@@ -73,6 +73,12 @@ const WithdrawInputCard: React.FC<orderInputCardProps> = ({ options}) => {
         }
 
         console.log(data);
+        reset({
+            amount: '',
+            confirmPw: '',
+            to: ''
+        })
+
 
     }
 
@@ -85,8 +91,8 @@ const WithdrawInputCard: React.FC<orderInputCardProps> = ({ options}) => {
              maxW={'40rem'}
              rounded={'lg'}
              boxShadow={'rgb(19 15 235 / 20%) 2px 4px 40px'}
-             // bgGradient={'linear(to-b,brand.primary,brand.secondary)'}
-            bg={'brand.primary'}
+            // bgGradient={'linear(to-b,brand.primary,brand.secondary)'}
+             bg={'brand.primary'}
         >
             <Heading mb={['4', '8', '12']}>
                 {'Recharge'}
@@ -144,7 +150,7 @@ const WithdrawInputCard: React.FC<orderInputCardProps> = ({ options}) => {
                 <Box mt={8}>
                     <BodyText>
                         {
-                        bodyText
+                            bodyText
                         }
 
                     </BodyText>

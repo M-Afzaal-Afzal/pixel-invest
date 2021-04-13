@@ -12,8 +12,8 @@ import ConfirmationModal from "../Modal/ConfirmationModal";
 
 type Inputs = {
     amount: string;
-    for: number;
-    validUntil:  Date ;
+    for: string;
+    validUntil:  string ;
 }
 
 interface orderInputCardProps {
@@ -22,7 +22,7 @@ interface orderInputCardProps {
 
 const OfferInputCard: React.FC<orderInputCardProps> = ({options}) => {
 
-    const {handleSubmit,watch, errors, register} = useForm<Inputs>();
+    const {handleSubmit,watch, errors, register,reset} = useForm<Inputs>();
 
     const pixelValue = useAppSelector(selectPixelValue);
 
@@ -68,6 +68,11 @@ const OfferInputCard: React.FC<orderInputCardProps> = ({options}) => {
         }
 
         console.log(data);
+        reset({
+            amount: '',
+            for: '',
+            validUntil: ''
+        })
 
     }
 
