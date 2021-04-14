@@ -3,7 +3,6 @@ import {Box, Container, Stack} from "@chakra-ui/react";
 
 import CardOpenOO from "../Cards/CardOpenOO";
 import Card from "../Cards/Card";
-import Chart from "../Dashboard/Chart";
 import orderOfferProps from "../../interfaces/cardOrOfferProps";
 // import CformInputCard from "../Form/CformInputCard";
 import {useAppSelector} from "../../store/hooks";
@@ -11,6 +10,7 @@ import {selectCurrentUser} from "../../store/currentUser/currentUserSlice";
 import OfferInputCard from "../Form/OfferInputCard";
 import OrderInputCard from "../Form/OrderInputCard";
 import {Fade} from "react-awesome-reveal";
+import ChartContainer from "../Chart/ChartContainer";
 
 const OrderOrOfferPage: React.FC<orderOfferProps> = ({type, data}) => {
 
@@ -57,11 +57,8 @@ const OrderOrOfferPage: React.FC<orderOfferProps> = ({type, data}) => {
                         </Stack>
 
                 </Container>
-                <Box py={20} align={'center'}>
-                    <Box p={6} align={'center'} maxW={'50rem'} h={'30rem'}>
-                        <Chart/>
-                    </Box>
-                </Box>
+                {/* so here is the chart container*/}
+                <ChartContainer/>
             </Box>
         </Box>
     );

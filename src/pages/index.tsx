@@ -11,15 +11,14 @@ import Image from 'next/image';
 
 const Index: React.FC = () => {
 
-    const [selectedId, setSelectedId] = useState<null | number>(null);
+    const [selectedImageId, setSelectedImageId] = useState<null | number>(null);
 
     const {isOpen, onOpen, onClose} = useDisclosure()
 
     const closeHandler = () => {
-        setSelectedId(null);
+        setSelectedImageId(null);
         onClose();
     }
-
 
     const MotionBox = motion(Box);
 
@@ -45,7 +44,7 @@ const Index: React.FC = () => {
         },
     ]
 
-    const imageSrc = infoData.find(data => data.id === selectedId)?.photoURL;
+    const imageSrc = infoData.find(data => data.id === selectedImageId)?.photoURL;
 
     return (
         <Box bg={'brand.tertiary'} p={['2', '6', '12', '20']}>
@@ -60,66 +59,69 @@ const Index: React.FC = () => {
             <Container maxW={'container.xl'}>
 
                 <VStack my={16} spacing={16}>
-                    <Fade cascade direction={'up'} triggerOnce>
-                        <AnimateSharedLayout>
-                            {
-                                infoData.map(data => (
-                                    <MotionBox mt={16} key={data.id} >
+                    <AnimateSharedLayout>
+                        {
+                            infoData.map(data => (
+                                <Fade cascade direction={'up'} key={data.id} triggerOnce>
+                                    <MotionBox mt={16}>
                                         <Info
                                             body={data.body}
                                             photoURL={data.photoURL}
                                             title={data.title}
                                             rightImage={data.rightImage}
                                             onClick={() => {
-                                                setSelectedId(data.id)
+                                                setSelectedImageId(data.id)
                                                 onOpen();
                                             }}
                                             layoutId={data.id}
                                         />
                                     </MotionBox>
-                                ))
+                                </Fade>
+                            ))
+                        }
+
+                        <AnimatePresence>
+                            {
+                                selectedImageId && imageSrc && (
+                                    <MotionBox>
+                                        <Modal blockScrollOnMount size={'2xl'} isCentered isOpen={isOpen}
+                                               onClose={onClose}>
+                                            <ModalOverlay onClick={closeHandler}/>
+                                            <ModalContent layoutId={selectedImageId} as={MotionBox} w={['28rem', '39rem']}
+                                                          h={['', '17rem', '28rem']}>
+                                                <ModalBody
+                                                    bg={'brand.background'}
+                                                    display={'flex'}
+                                                    justifyContent={'center'}
+                                                    p={0} alignItems={'center'}
+                                                    align={'center'}
+                                                    rounded={'lg'}
+                                                >
+                                                    <ModalCloseButton
+                                                        bg={'brand.secondary'}
+                                                        borderRadius={50}
+                                                        _hover={{background: 'brand.tertiary'}}
+                                                        _active={{background: 'brand.tertiary'}}
+                                                        zIndex={99999} onClick={() => {
+                                                        setSelectedImageId.bind(null);
+                                                        onClose();
+                                                    }} color={'white'}/>
+                                                    <MotionBox animate={{scale: 1}} w={['25rem', '36rem']}
+                                                               justifySelf={'center'} h={['14rem', '25rem']}
+                                                               overflow={'hidden'}
+                                                               position={'relative'}>
+                                                        <Image src={imageSrc} layout={'fill'} objectFit={'cover'}/>
+                                                    </MotionBox>
+                                                </ModalBody>
+                                            </ModalContent>
+
+                                        </Modal>
+                                    </MotionBox>
+                                )
                             }
+                        </AnimatePresence>
+                    </AnimateSharedLayout>
 
-                            <AnimatePresence>
-                                {
-                                    selectedId && imageSrc && (
-                                        <MotionBox>
-                                            <Modal blockScrollOnMount size={'2xl'} isCentered isOpen={isOpen} onClose={onClose}>
-                                                <ModalOverlay onClick={closeHandler}/>
-                                                <ModalContent layoutId={selectedId}  as={MotionBox} w={['28rem','39rem']} h={['','17rem','28rem']}>
-                                                    <ModalBody
-                                                        bg={'brand.background'}
-                                                        display={'flex'}
-                                                        justifyContent={'center'}
-                                                        p={0} alignItems={'center'}
-                                                        align={'center'}
-                                                    >
-                                                        <ModalCloseButton
-                                                            bg={'brand.secondary'}
-                                                            borderRadius={50}
-                                                            _hover={{background: 'brand.tertiary'}}
-                                                            _active={{background: 'brand.tertiary'}}
-                                                            zIndex={99999} onClick={() => {
-                                                            setSelectedId.bind(null);
-                                                            onClose();
-                                                        }} color={'white'}/>
-                                                        <MotionBox animate={{scale: 1}} w={['25rem','36rem']}
-                                                                   justifySelf={'center'} h={['14rem','25rem']}
-                                                                   overflow={'hidden'}
-                                                                   position={'relative'}>
-                                                            <Image src={imageSrc} layout={'fill'} objectFit={'cover'}/>
-                                                        </MotionBox>
-                                                    </ModalBody>
-                                                </ModalContent>
-
-                                            </Modal>
-                                        </MotionBox>
-                                    )
-                                }
-                            </AnimatePresence>
-                        </AnimateSharedLayout>
-
-                    </Fade>
                 </VStack>
 
             </Container>
