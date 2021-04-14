@@ -108,6 +108,7 @@ const WithdrawInputCard: React.FC<orderInputCardProps> = ({options}) => {
                 <FormControl isInvalid={!!errors.amount}>
                     <FormLabel htmlFor="amount">Amount</FormLabel>
                     <CInput
+                        id={'amount'}
                         min={0}
                         placeholder={'Amount'}
                         name={'amount'}
@@ -121,9 +122,10 @@ const WithdrawInputCard: React.FC<orderInputCardProps> = ({options}) => {
                     </CFormErrorMessage>
                 </FormControl>
 
-                <FormControl mt={4} id="selectTo">
-                    <FormLabel>{'To'}</FormLabel>
+                <FormControl mt={4} isInvalid={!!errors.to}>
+                    <FormLabel htmlFor={'to'}>{'To'}</FormLabel>
                     <CSelect
+                        id={'to'}
                         name={'to'}
                         placeholder="Select"
                         ref={selectReg}

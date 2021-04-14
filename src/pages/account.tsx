@@ -78,7 +78,6 @@ const Account = () => {
             </Container>
         </Box>
     )
-        ;
 };
 
 export default Account
