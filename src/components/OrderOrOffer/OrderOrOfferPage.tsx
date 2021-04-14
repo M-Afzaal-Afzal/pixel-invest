@@ -24,7 +24,7 @@ const OrderOrOfferPage: React.FC<orderOfferProps> = ({type, data}) => {
 
                 {
                     (type === 'offer') && (
-                        <Fade triggerOnce cascade direction={'up'}>
+                        <Fade key={'offer'} triggerOnce cascade direction={'up'}>
                             <OfferInputCard options={['select', 'option 1', 'option 2']}/>
                         </Fade>
                     )
@@ -32,7 +32,7 @@ const OrderOrOfferPage: React.FC<orderOfferProps> = ({type, data}) => {
 
                 {
                     (type === 'order') && (
-                        <Fade triggerOnce direction={'up'} cascade>
+                        <Fade key={'order'} triggerOnce direction={'up'} cascade>
                             <OrderInputCard options={['select', 'option 1', 'option 2']}/>
                         </Fade>
                     )

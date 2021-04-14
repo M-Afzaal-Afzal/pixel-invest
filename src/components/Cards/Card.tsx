@@ -49,8 +49,7 @@ const Card: React.FC<CardProps> = ({myAccountInfo,personalRanking, heading, bigg
                             <OrderedList>
                                 {
                                     personalRanking.map(({name, id, pixels}) => (
-                                        <CListItem mt={'.5rem'}
-                                                   key={id}>{name.toUpperCase()} : {pixels} PiXeL</CListItem>
+                                        <CListItem mt={'.5rem'} key={id + pixels}>{name.toUpperCase()} : {pixels} PiXeL</CListItem>
                                     ))
                                 }
                             </OrderedList>
@@ -105,7 +104,7 @@ const Card: React.FC<CardProps> = ({myAccountInfo,personalRanking, heading, bigg
                                 {
                                     biggestAccounts.map(({name, id, pixels}) => (
                                         <CListItem mt={'.5rem'}
-                                                   key={id}>{name.toUpperCase()} : {pixels} PiXeL</CListItem>
+                                                   key={id + pixels}>{name.toUpperCase()} : {pixels} PiXeL</CListItem>
                                     ))
                                 }
                             </OrderedList>

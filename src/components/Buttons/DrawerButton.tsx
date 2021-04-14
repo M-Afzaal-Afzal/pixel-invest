@@ -9,10 +9,11 @@ const DrawerButton = forwardRef<ButtonProps,'button'>(({children,...props},ref) 
         <Button
             as={MotionButton}
             whileHover={{
-                scale: '1.0777',
+                scale: 1.0777,
             }}
+            display={'table'}
             whileTap={{
-                scale: '1'
+                scale: 1
             }}
             initial={{scale: 1}}
             fontWeight={'normal'}

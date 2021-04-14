@@ -34,7 +34,7 @@ const WithdrawInputCard: React.FC<orderInputCardProps> = ({options}) => {
         setIsConfirmed(false);
     }
 
-    const {handleSubmit, watch, errors, register,reset} = useForm<Inputs>();
+    const {handleSubmit, watch, errors, register, reset} = useForm<Inputs>();
 
     const amountValue: string = watch('amount');
     const selectValue = watch('to');
@@ -104,7 +104,7 @@ const WithdrawInputCard: React.FC<orderInputCardProps> = ({options}) => {
                 {'Withdraw'}
             </Heading>
             <form onSubmit={handleSubmit(onSubmit)}>
-                {/*@ts-ignore*/}
+
                 <FormControl isInvalid={!!errors.amount}>
                     <FormLabel htmlFor="amount">Amount</FormLabel>
                     <CInput
@@ -130,8 +130,8 @@ const WithdrawInputCard: React.FC<orderInputCardProps> = ({options}) => {
                         defaultValue={options[0]}
                     >
                         {
-                            options?.map((opt) => (
-                                <option>{opt}</option>
+                             options?.map((opt, i) => (
+                                    <option key={i}>{opt}</option>
                             ))
                         }
 
@@ -146,6 +146,7 @@ const WithdrawInputCard: React.FC<orderInputCardProps> = ({options}) => {
                         name={'confirmPw'}
                         ref={confirmPwReg}
                         type={'password'}
+                        id={'confirmPw'}
                     />
                     <CFormErrorMessage>
                         {

@@ -127,8 +127,8 @@ const OfferInputCard: React.FC<orderInputCardProps> = ({options}) => {
                         defaultValue={options[0]}
                     >
                         {
-                            options?.map((opt) => (
-                                <option>{opt}</option>
+                            options?.map((opt,i) => (
+                                <option key={opt + i}>{opt}</option>
                             ))
                         }
 

@@ -37,7 +37,7 @@ const CardOpenOO: React.FC<cardOpenOOProps> = ({type, data}) => {
             {
                 //@ts-ignore
                 data && data.map((value, index) => (
-                    <Box>
+                    <Box key={index}>
                         <BodyText color={'yellow.300'} mt={2} fontWeight={'bold'}>
                             {type} Position: {index + 1}
                         </BodyText>

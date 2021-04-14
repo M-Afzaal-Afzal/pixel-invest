@@ -9,12 +9,12 @@ const ButtonSecondary = forwardRef<ButtonProps, 'button'>(({children, ...props},
     return (
         <MotionButton
             whileHover={{
-                scale: '1.0777',
+                scale: 1.0777,
             }}
             initial={{scale: 1}}
-
+            display={'table'}
             whileTap={{
-                scale: '1'
+                scale: 1
             }}
             ref={ref}
             colorScheme={'buttonTwo'}

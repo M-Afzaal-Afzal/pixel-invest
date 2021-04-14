@@ -10,11 +10,12 @@ const ButtonPrimary = forwardRef<ButtonProps, 'button'>(({children, ...props}, r
         <MotionButton
             whileHover={{
                 cursor: 'pointer',
-                scale: '1.0777',
+                scale: 1.0777,
             }}
             initial={{scale: 1}}
+            display={'table'}
             whileTap={{
-                scale: '1'
+                scale: 1
             }}
             ref={ref}
             colorScheme={'button'}

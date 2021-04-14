@@ -115,11 +115,12 @@ const OrderInputCard: React.FC<orderInputCardProps> = ({options}) => {
                 {'Create Order'}
             </Heading>
             <form onSubmit={handleSubmit(onSubmit)}>
-                {/*@ts-ignore*/}
+
                 <FormControl isInvalid={!!errors.amount}>
                     <FormLabel htmlFor="amount">Amount</FormLabel>
                     <CInput
                         min={0}
+                        id={'amount'}
                         placeholder={'Amount'}
                         name={'amount'}
                         ref={amountReg}
@@ -139,10 +140,11 @@ const OrderInputCard: React.FC<orderInputCardProps> = ({options}) => {
                         placeholder="Select"
                         ref={selectReg}
                         defaultValue={options[0]}
+                        id={'selectFor'}
                     >
                         {
-                            options?.map((opt) => (
-                                <option>{opt}</option>
+                            options?.map((opt,i) => (
+                                <option key={opt + i}>{opt}</option>
                             ))
                         }
 
@@ -157,6 +159,7 @@ const OrderInputCard: React.FC<orderInputCardProps> = ({options}) => {
                         name={'validUntil'}
                         ref={dateReg}
                         type={'date'}
+                        id={'validUntil'}
                     />
                     <CFormErrorMessage>
                         {

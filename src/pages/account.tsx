@@ -31,7 +31,7 @@ const Account = () => {
                           gridGap={[12, null, null, '2rem']}>
 
                         <Box>
-                            <Fade cascade triggerOnce direction={'up'}>
+                            <Fade cascade key={1} triggerOnce direction={'up'}>
                                 <Box>
                                     <RechargeInputCard options={['Paypal', 'Visa', 'Klarna']}/>
                                     {/* first i was using the same component for recharge, withdraw and create order and offer.*/}
@@ -51,7 +51,7 @@ const Account = () => {
                         <Box order={[-1, null, null, 0]}>
                             <Box top={['null', 'null', 'null', 20]} position={['relative', null, null, 'sticky']}>
                                 <Box>
-                                    <Fade triggerOnce delay={400} direction={'up'}>
+                                    <Fade key={2} triggerOnce delay={400} direction={'up'}>
                                         <Card
                                             heading={'My Account'}
                                             myAccountInfo={userAccountInfo}
@@ -60,7 +60,7 @@ const Account = () => {
                                 </Box>
                                 {/*top={['null','null','null',490]}*/}
                                 <Box position={['relative', null, null, 'sticky']} mt={12}>
-                                    <Fade triggerOnce delay={700} direction={'up'}>
+                                    <Fade key={3} triggerOnce delay={700} direction={'up'}>
                                         <Card heading={'Personal Ranking'}
                                               personalRanking={[{name: 'afzaal', id: 2, pixels: 333}, {
                                                   name: 'afzaal',
