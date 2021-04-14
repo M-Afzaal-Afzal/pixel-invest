@@ -3,7 +3,7 @@ import type {RootState} from '../store'
 
 // Define a type for the slice state
 import userInterface from "../../interfaces/userInterface";
-import axios from "axios";
+import {client} from "../../services/base.api";
 
 interface currentUserSliceTypes {
     user: userInterface | null;
@@ -22,7 +22,7 @@ const initialState: currentUserSliceTypes = {
 export const getCurrentUser = createAsyncThunk(
     'currentUser/getCurrentUser',
     async () => {
-         return await axios.get('https://my-json-server.typicode.com/M-Afzaal-Afzal/peerstu-Api/myAccount')
+         return await client.get('/myAccount')
             .then(res => {
                 console.log(res.data)
                 return res.data

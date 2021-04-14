@@ -25,7 +25,7 @@ const ChartContainer = () => {
             {/*component for chart*/}
             <Fade triggerOnce direction={'up'}>
                 <MotionBox onClick={openHandler}  align={'center'}>
-                    <MotionBox animate={{scale: '1'}} transition={{type: 'linear'}} layoutId={1} p={6} align={'center'} maxW={'50rem'} h={'30rem'}>
+                    <MotionBox transition={{type: 'linear'}} layoutId={1} p={6} align={'center'} maxW={'50rem'} h={'30rem'}>
                         <Chart/>
                     </MotionBox>
                 </MotionBox>
@@ -58,8 +58,8 @@ const ChartContainer = () => {
                                                 setSelectedGraphId(null);
                                                 onClose();
                                             }} color={'white'}/>
-                                        <MotionBox animate={{scale: '1'}} transition={{type: 'linear'}}>
-                                            <Box p={6} align={'center'} w={['25rem','35rem','50rem']} h={['24rem','28rem','30rem']}>
+                                        <MotionBox transition={{type: 'linear'}}>
+                                            <Box _hover={{cursor:'pointer'}} p={6} align={'center'} w={['25rem','35rem','50rem']} h={['24rem','28rem','30rem']}>
                                                 <Chart/>
                                             </Box>
                                         </MotionBox>

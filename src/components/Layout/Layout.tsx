@@ -3,13 +3,8 @@ import Header from "../Layout/Header";
 import Footer from "../Layout/Footer";
 import {Box} from '@chakra-ui/react'
 import {useAppDispatch} from "../../store/hooks";
-import {getOpenOrders} from "../../store/openOrders/openOrdersSlice";
-import {getOpenOffers} from "../../store/openOffers/openOffersSlice";
-import {getBiggestAccounts} from "../../store/biggestAccounts/biggestAccountsSlice";
-// import {selectErrorMessageCU} from "../../store/currentUser/currentUserSlice";
-import {getPixelValue} from "../../store/pixelValue/pixelValue";
 
-// import {getCurrentUser} from "../../store/currentUser/currentUserSlice";
+import {getBiggestAccounts,getCurrentUser,getOpenOrders,getOpenOffers,getPixelValue} from '../../services/api';
 
 const Layout: React.FC = ({children}) => {
 
@@ -21,14 +16,10 @@ const Layout: React.FC = ({children}) => {
         dispatch(getOpenOffers());
         dispatch(getBiggestAccounts());
         dispatch(getPixelValue());
-        // dispatch(getCurrentUser());
+        dispatch(getCurrentUser());
 
         // implementing the tawk.to
 
-        // <!--Start of Tawk.to Script-->
-
-        // const Tawk_API = Tawk_API || {},
-        //     Tawk_LoadStart = new Date();
         (function () {
             const s1 = document.createElement("script"),
                 s0 = document.getElementsByTagName("script")[0];
@@ -40,8 +31,7 @@ const Layout: React.FC = ({children}) => {
             // @ts-ignore
             s0.parentNode.insertBefore(s1, s0);
         })();
-
-        // <!--End of Tawk.to Script-->
+        // end of the tawk.to script
 
     }, []);
 

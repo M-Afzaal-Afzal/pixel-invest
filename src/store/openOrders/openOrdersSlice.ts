@@ -2,7 +2,7 @@ import {createAsyncThunk, createSlice} from '@reduxjs/toolkit'
 import type {RootState} from '../store'
 
 // Define a type for the slice state
-import axios from "axios";
+import {client} from "../../services/base.api";
 import orderInterface from "../../interfaces/orderInterface";
 // import ordersInterface from '../../interfaces/orderInterface';
 
@@ -23,7 +23,7 @@ const initialState: OpenOrdersSliceTypes = {
 export const getOpenOrders = createAsyncThunk(
     'openOrders/getOpenOrders',
     async () => {
-        return axios.get('https://my-json-server.typicode.com/M-Afzaal-Afzal/peerstu-Api/openOrders')
+        return client.get('/openOrders')
             .then(res => {
                 console.log(res.data)
                 return res.data
