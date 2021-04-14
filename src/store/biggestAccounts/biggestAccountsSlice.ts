@@ -1,9 +1,9 @@
-import {createAsyncThunk, createSlice} from '@reduxjs/toolkit'
+import { createSlice} from '@reduxjs/toolkit'
 import type {RootState} from '../store'
 
 // Define a type for the slice state
 import biggestAccountInterface from "../../interfaces/biggestAccountInterface";
-import {client} from "../../services/base.api";
+import {getBiggestAccounts} from "../../services/getBiggestAccounts";
 
 type biggestAccountsSliceTypes = {
     biggestAccounts: biggestAccountInterface[] | null;
@@ -19,20 +19,6 @@ const initialState: biggestAccountsSliceTypes = {
 
 };
 
-export const getBiggestAccounts = createAsyncThunk(
-    'biggestAccounts/getBiggestAccounts',
-    async () => {
-        return client.get('/biggestAccounts')
-            .then(res => {
-                console.log(res.data)
-                return res.data
-            })
-            .catch(err => {
-                console.log(err.message)
-                throw err.message;
-            });
-    }
-)
 
 export const biggestAccountsSlice = createSlice({
     name: 'biggestAccounts',

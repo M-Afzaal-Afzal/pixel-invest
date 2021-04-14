@@ -1,9 +1,9 @@
-import {createAsyncThunk, createSlice} from '@reduxjs/toolkit'
+import {createSlice} from '@reduxjs/toolkit'
 import type {RootState} from '../store'
+import {getCurrentUser} from "../../services/getCurrentUser";
 
 // Define a type for the slice state
 import userInterface from "../../interfaces/userInterface";
-import {client} from "../../services/base.api";
 
 interface currentUserSliceTypes {
     user: userInterface | null;
@@ -19,20 +19,6 @@ const initialState: currentUserSliceTypes = {
 
 };
 
-export const getCurrentUser = createAsyncThunk(
-    'currentUser/getCurrentUser',
-    async () => {
-         return await client.get('/myAccount')
-            .then(res => {
-                console.log(res.data)
-                return res.data
-            })
-            .catch(err => {
-                console.log(err.message);
-                throw (err.message);
-            });
-    }
-)
 
 export const currentUserSlice = createSlice({
     name: 'currentUser',

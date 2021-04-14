@@ -1,8 +1,8 @@
-import {createAsyncThunk, createSlice} from '@reduxjs/toolkit'
+import { createSlice} from '@reduxjs/toolkit'
 import type {RootState} from '../store'
+import {getOpenOrders} from "../../services/getOpenOrders";
 
 // Define a type for the slice state
-import {client} from "../../services/base.api";
 import orderInterface from "../../interfaces/orderInterface";
 // import ordersInterface from '../../interfaces/orderInterface';
 
@@ -19,21 +19,6 @@ const initialState: OpenOrdersSliceTypes = {
     errorMessage: null,
 
 };
-
-export const getOpenOrders = createAsyncThunk(
-    'openOrders/getOpenOrders',
-    async () => {
-        return client.get('/openOrders')
-            .then(res => {
-                console.log(res.data)
-                return res.data
-            })
-            .catch(err => {
-                console.log(err.message)
-                throw err.message;
-            });
-    }
-)
 
 export const openOrdersSlice = createSlice({
     name: 'openOrders',

@@ -1,8 +1,8 @@
-import {createAsyncThunk, createSlice} from '@reduxjs/toolkit'
+import { createSlice} from '@reduxjs/toolkit'
 import type {RootState} from '../store'
+import {getPixelValue} from "../../services/getPixelValue";
 
 // Define a type for the slice state
-import {client} from "../../services/base.api";
 
 // import ordersInterface from '../../interfaces/orderInterface';
 
@@ -19,20 +19,7 @@ const initialState: pixelValueInterface = {
     isLoading: false
 };
 
-export const getPixelValue = createAsyncThunk(
-    'pixelValue/getPixelValue',
-    async () => {
-        return client.get('/pixel')
-            .then(res => {
-                console.log(res.data)
-                return res.data
-            })
-            .catch(err => {
-                console.log(err.message)
-                throw err.message;
-            });
-    }
-)
+
 
 export const pixelValueSlice = createSlice({
     name: 'pixelValue',

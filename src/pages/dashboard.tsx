@@ -29,6 +29,7 @@ const Dashboard: React.FC = () => {
 
     return (
         <Box bg={'brand.background'} py={20}>
+
             <ChartContainer/>
 
             <Container maxW={'container.xl'}>
