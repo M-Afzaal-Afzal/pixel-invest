@@ -13,7 +13,7 @@ const ButtonPrimary = forwardRef<ButtonProps, 'button'>(({children, ...props}, r
                 scale: 1.0777,
             }}
             initial={{scale: 1}}
-            display={'table'}
+            // display={'table'}
             whileTap={{
                 scale: 1
             }}

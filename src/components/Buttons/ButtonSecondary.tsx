@@ -12,7 +12,7 @@ const ButtonSecondary = forwardRef<ButtonProps, 'button'>(({children, ...props},
                 scale: 1.0777,
             }}
             initial={{scale: 1}}
-            display={'table'}
+            // display={'table'}
             whileTap={{
                 scale: 1
             }}

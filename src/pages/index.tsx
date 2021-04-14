@@ -49,11 +49,11 @@ const Index: React.FC = () => {
     return (
         <Box bg={'brand.tertiary'} p={['2', '6', '12', '20']}>
             {/* Box Containing logo with title*/}
-            <Fade triggerOnce direction={'up'}>
+            {/*<Fade triggerOnce direction={'up'}>*/}
                 <Box align={'center'} mb={8}>
                     <Pentagon/>
                 </Box>
-            </Fade>
+            {/*</Fade>*/}
 
             {/* Main body text which is centered*/}
             <Container maxW={'container.xl'}>
@@ -76,7 +76,7 @@ const Index: React.FC = () => {
                                             layoutId={data.id}
                                         />
                                     </MotionBox>
-                                </Fade>
+                                 </Fade>
                             ))
                         }
 

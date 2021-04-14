@@ -11,7 +11,7 @@ const DrawerButton = forwardRef<ButtonProps,'button'>(({children,...props},ref) 
             whileHover={{
                 scale: 1.0777,
             }}
-            display={'table'}
+            // display={'table'}
             whileTap={{
                 scale: 1
             }}
