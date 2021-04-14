@@ -194,7 +194,7 @@ const CFormInputCard = () => {
                         Apply Changes
                     </ButtonSecondary>
                 </Box>
-                <ConfirmationModal heading={'Are You Sure To Recharge?'}
+                <ConfirmationModal heading={'Are You Sure To Apply Changes?'}
                                    onSubmit={onSubmit}
                                    makeFromRejected={makeFromRejected}
                                    handleSubmit={handleSubmit}

@@ -166,7 +166,7 @@ const WithdrawInputCard: React.FC<orderInputCardProps> = ({options}) => {
                         Withdraw
                     </ButtonSecondary>
                 </Box>
-                <ConfirmationModal heading={'Are You Sure To Recharge?'}
+                <ConfirmationModal heading={'Are You Sure To Withdraw?'}
                                    onSubmit={onSubmit}
                                    makeFromRejected={makeFromRejected}
                                    handleSubmit={handleSubmit}
