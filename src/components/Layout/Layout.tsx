@@ -4,7 +4,7 @@ import Footer from "../Layout/Footer";
 import {Box} from '@chakra-ui/react'
 import {useAppDispatch} from "../../store/hooks";
 
-import {getBiggestAccounts,getCurrentUser,getOpenOrders,getOpenOffers,getPixelValue} from '../../services/api';
+import {getBiggestAccounts,getOpenOrders,getOpenOffers,getPixelValue} from '../../services/api';
 
 const Layout: React.FC = ({children}) => {
 
@@ -16,7 +16,7 @@ const Layout: React.FC = ({children}) => {
         dispatch(getOpenOffers());
         dispatch(getBiggestAccounts());
         dispatch(getPixelValue());
-        dispatch(getCurrentUser());
+        // dispatch(getCurrentUser());
 
         // implementing the tawk.to
 
