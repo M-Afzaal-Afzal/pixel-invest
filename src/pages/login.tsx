@@ -5,10 +5,12 @@ import CFormErrorMessage from "../components/Form/CFormErrorMessage";
 import CInput from "../components/Form/CInput";
 import {useAppDispatch, useAppSelector} from "../store/hooks";
 import {
-    getCurrentUser,
     selectCurrentUser,
     selectIsLoadingCU
 } from "../store/currentUser/currentUserSlice";
+
+import {getCurrentUser} from "../services/api";
+
 import {useRouter} from "next/router";
 import {Fade} from "react-awesome-reveal";
 import ButtonSecondary from "../components/Buttons/ButtonSecondary";
